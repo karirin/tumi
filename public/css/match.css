@@ -1,0 +1,1724 @@
+/* ///////////////////////// */
+
+
+/*      　トップ画面          */
+
+
+/* ///////////////////////// */
+
+* {
+    outline: 0;
+    font-family: sans-serif
+}
+
+<<<<<<< HEAD
+=======
+.top_image{
+    margin-top: 2rem;
+}
+
+.match_top{
+    text-align: left;
+}
+
+>>>>>>> 29e5689a371c8c7fa23ec3daed1644895d121451
+.match_top .match_user {
+    display: inline-block;
+    vertical-align: text-top;
+    line-height: initial;
+    margin-right: 1.7rem;
+    margin-bottom: 3rem;
+    margin-right: 1.4rem;
+}
+
+.match_top .sample_user {
+    display: inline-block;
+    vertical-align: text-top;
+    line-height: initial;
+    margin-right: 1.7rem;
+    margin-bottom: 3rem;
+    margin-right: 1.4rem;
+}
+
+.match_top .match_user_img {
+    border-radius: 10rem;
+    width: 12rem;
+    height: 12rem;
+}
+
+.match_top .match_user_profile {
+    margin-top: 0.5rem;
+}
+
+.match_top .match_user_prof {
+    font-size: 0.5rem;
+}
+
+.match_top .match_user_occupation {
+    font-size: 0.3rem;
+    font-weight: 700;
+    padding: 4px 6px;
+    border-radius: 2px;
+}
+
+.match_top .match_user_age {
+    font-size: 0.8rem;
+    font-weight: 900;
+}
+
+.edit_address {
+    width: auto;
+}
+
+.edit_name {
+    display: inline-block;
+    width: 50%;
+}
+
+.slide_prof .edit_profile_img .fa-image_range {
+    top: 22.5%;
+    right: 47%;
+}
+
+.edit_btns {
+    position: fixed;
+    bottom: 15%;
+    right: 10%;
+}
+
+.edit_btns .profile_close {
+    width: 92px;
+}
+
+.edit_btns .profile_close.profile {
+    z-index: 15;
+    font-size: 1rem;
+    position: absolute;
+    left: -124%;
+    top: 53%;
+}
+
+.tag .user_age {
+    display: inline-block;
+}
+
+.welcome{
+    position: fixed;
+    width: 100%;
+    top: 37%;
+    margin: 0px 36%;
+    font-weight: 900;
+    letter-spacing: 0.3rem;
+    line-height: 3rem;
+    display: none;
+}
+
+.user_detail_message1{
+    position: fixed;
+    width: 100%;
+    top: 44%;
+    margin: 0px 33%;
+    font-weight: 900;
+    letter-spacing: 0.3rem;
+    line-height: 3rem;
+}
+
+.user_detail_message2{
+    position: fixed;
+    width: 100%;
+    top: 44%;
+    margin: 0px 24%;
+    font-weight: 900;
+    letter-spacing: 0.3rem;
+    line-height: 3rem;
+    display:none;
+}
+
+.good_count{
+    position: fixed;
+    bottom: 8%;
+    font-size: 3rem;
+    right: 8%;
+}
+
+.match_box {
+    padding: 1rem 1rem 0.5rem 1rem;
+    border: solid 3px burlywood;
+    border-radius: 8px;
+    position: fixed;
+    bottom: 7%;
+    font-size: 3rem;
+    right: 5%;
+}
+
+.match_box .box-title {
+    position: absolute;
+    display: inline-block;
+    top: -13px;
+    left: 10px;
+    line-height: 1;
+    font-size: 19px;
+    background: #fff;
+    color: #000;
+    font-weight: bold;
+}
+
+.match_box p {
+    margin: 0; 
+    padding: 0;
+}
+
+.smartphone_header{
+    display: none;
+    width: 100%;
+    height: 10%;
+    background-color: #fff;
+    position: fixed;
+    bottom: 0%;
+    z-index: 10;
+    border-top:1px solid rgba(222, 184, 135, 0.35);
+}
+
+.smartphone_header div span{
+    margin-left:1rem;
+}
+
+.smartphone_header div i{
+    font-size: 4rem;
+    margin: 1rem 3.4rem;
+}
+
+.top_logo{
+    width: 53%;
+    position: absolute;
+    top: 0%;
+    right: 1%;
+    height: auto;
+}
+
+.worries{
+    display: inline-block;
+    width: 25%;
+    text-align: left;
+    margin:1rem;
+}
+
+.btn-square {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #668ad8;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+}
+
+.btn-square:active {
+/*ボタンを押したとき*/
+-webkit-transform: translateY(4px);
+transform: translateY(4px);/*下に動く*/
+border-bottom: none;/*線を消す*/
+}
+
+
+.saling_mail{
+    text-align: center;
+}
+
+/* ///////////////////////// */
+
+
+/*      ユーザー詳細画面      */
+
+
+/* ///////////////////////// */
+
+.modal_match {
+    display: none;
+    top: 0;
+    left: 0;
+    background-color: rgba(152, 152, 152, 0.7);
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+.matchuser_detaile {
+    display: none;
+    position: absolute;
+    z-index: 15;
+    left: 37%;
+    border-radius: 8px;
+    -webkit-transform: translate(-50%, -10%);
+    transform: translate(-50%, -10%);
+    font-size: 1.3rem;
+    background-color: #fefefb;
+    color: #000;
+    width: 300px;
+    height: auto;
+    top: 20%;
+}
+
+.matchuser_detaile_prof,
+.matchuser_detaile_prof_sample {
+    display: none;
+    position: absolute;
+    z-index: 15;
+    left: 65%;
+    border-radius: 8px;
+    -webkit-transform: translate(-50%, -10%);
+    transform: translate(-50%, -10%);
+    font-size: 1.3rem;
+    background-color: #fefefb;
+    color: #000;
+    width: 300px;
+    height: auto;
+    top: 18.2%;
+}
+
+.matchuser_detaile_prof h6,
+.matchuser_detaile_prof_sample h6 {
+    padding: 0em 0.5em;
+    color: #494949;
+    background: transparent;
+    border-left: solid 5px #ff9800;
+}
+
+.matchuser_detaile .matchuser_name {
+    font-weight: 1000;
+}
+
+.matchuser_detaile .matchuser_age {
+    font-size: x-small;
+}
+
+.matchuser_detaile .matchuser_address {
+    font-size: x-small;
+}
+
+.matchuser_detaile .matchuser_profile {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.matchuser_detaile .matchuser_img {
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+}
+
+.matchuser_detaile .matchuser_occupation {
+    font-size: x-small;
+}
+
+#match_good_btn,
+.good_btn {
+    display: inline-block;
+    padding: 7px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    color: #FFF;
+    background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+    transition: .4s;
+    font-size: 0.8rem;
+    width: 40%;
+}
+
+#match_good_btn:hover,
+.good_btn:hover {
+    background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
+}
+
+#match_good_btn .fas.fa-thumbs-up,
+.good_btn .fas.fa-thumbs-up {
+    margin-right: 0.5rem;
+}
+
+.flash_message {
+    padding: 0.5em 1em;
+    background: -moz-linear-gradient(#FFC107, #ff8b5f);
+    background: -webkit-linear-gradient(#FFC107, #ff8b5f);
+    background: linear-gradient(to right, #FFC107, #ff8b5f);
+    color: #FFF;
+    position: fixed;
+    left: 4%;
+    bottom: 10%;
+    transition: 1s;
+    font-size: 1.25rem;
+    border-radius: 8px;
+}
+
+.login_message,
+.match_message,
+.top_message,
+.add_message,
+.mail_message {
+    padding: 0.5em 1em;
+    background: -moz-linear-gradient(#FFC107, #ff8b5f);
+    background: -webkit-linear-gradient(#FFC107, #ff8b5f);
+    background: linear-gradient(to right, #FFC107, #ff8b5f);
+    color: #FFF;
+    position: fixed;
+    left: 4%;
+    bottom: 10%;
+    transition: 1s;
+    font-size: 1.25rem;
+    border-radius: 8px;
+    z-index: 15;
+    display: none;
+}
+
+.matchuser_workhistory{
+    word-wrap: break-word;
+}
+
+/* ///////////////////////// */
+
+
+/*         マッチ画面         */
+
+
+/* ///////////////////////// */
+
+.matching_card {
+    text-align: center;
+}
+
+.card {
+    width: 25%;
+    height: 57%;
+    position: absolute;
+    left: 41%;
+    right: 0;
+    top: 15%;
+    text-align: center;
+    border-radius: 8px;
+    background-color: #fefefb;
+}
+
+.old_card {
+    width: 25%;
+    height: 50%;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 15%;
+    margin: auto;
+    text-align: center;
+    border-radius: 8px;
+    background-color: #fefefb;
+}
+
+.card .profile_name {
+    font-size: 1rem;
+    text-align: left;
+    margin-left: 1.5rem;
+    position: absolute;
+    bottom: 5%;
+    font-size: 1.5rem;
+    color: black;
+    font-weight: 900;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.card .comment {
+    white-space: pre-wrap;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.card .fas.fa-times-circle {
+    font-size: 40px;
+}
+
+.fas.fa-times-circle:hover {
+    opacity: 0.5;
+}
+
+.card .fas.fa-heart {
+    font-size: 40px;
+}
+
+.card .fas.fa-heart:hover {
+    opacity: 0.5;
+}
+
+.card .match_card_color {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    position: absolute;
+    background-color: #ff948cdb;
+    color: #FFF;
+    z-index: 10;
+}
+
+.card .unmatch_card_color {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    position: absolute;
+    background-color: #666768db;
+    color: #FFF;
+    z-index: 10;
+}
+
+.card .back_card_color {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    position: absolute;
+    background-color: #666768db;
+    color: #FFF;
+}
+
+.matching_btn {
+    position: absolute;
+    left: 43.5%;
+    top: 76%;
+    z-index: 15!important;
+}
+
+.matching_img {
+    border-radius: 10rem;
+    border: solid 0.3rem;
+    width: 12rem;
+    height: 12rem;
+}
+
+.match_process {
+    text-align: center;
+}
+
+.fa-image_range.fa {
+    border: 1px solid;
+    padding: 1rem;
+    border-radius: 4rem;
+}
+
+/* ///////////////////////// */
+
+
+/*      プロフィール画面      */
+
+
+/* ///////////////////////// */
+
+.profile_top{
+    width: 100%;
+}
+
+.profile_top .col-3{
+    display: inline-block;
+}
+
+.profile_top .col-8{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.user_workhistory{
+    word-wrap: break-word;
+}
+
+.message_disp .message{
+    margin-top: 5rem;
+}
+
+.message_list:nth-last-child(){
+    margin-bottom: 2rem;
+}
+
+/* ///////////////////////// */
+
+
+/*       メディアクエリ       */
+
+
+/*       　スマホ対応　       */
+
+
+/* ///////////////////////// */
+/* @media screen and (max-width: 1400px){
+    .top_image{
+        width: 54%!important;
+    }
+}
+
+@media screen and (max-width: 1300px){
+    .top_image{
+        width: 56%!important;
+    }
+}
+
+@media screen and (max-width: 1200px){
+    .top_image{
+        width: 58%!important;
+    }
+}
+
+
+} */
+
+@media screen and (max-width: 1300px){
+    /* .howtouse.good_engineer h3{
+        font-size: 1.6rem;
+    } */
+
+    .howtouse_content.matching{
+        font-size: 0.9rem;
+    }
+
+    /* .howtouse.good_engineer .howtouse_content{
+        font-size: 1.2rem!important;
+    } */
+
+    /* .howtouse.good_engineer h3{
+        font-size: 1.4rem;
+    } */
+
+    /* .howtouse.good_engineer .howtouse_firstimage{
+        width: 85.5%!important;
+    } */
+}
+
+@media screen and (max-width: 1200px){
+    /* .howtouse.good_engineer h3{
+        font-size: 1.5rem;
+    } */
+
+    /* .howtouse.good_engineer .howtouse_firstimage{
+        width: 73%!important;
+    } */
+    .worries h4{
+        height:6rem!important;
+    }
+}
+
+@media screen and (max-width: 1100px){
+    /* .howtouse.good_engineer h3{
+        font-size: 1.4rem;
+    } */
+
+    /* .howtouse.good_engineer .howtouse_content{
+        font-size: 0.9rem!important;
+    } */
+    /* .howtouse.good_engineer{
+        width:43%;
+    } */
+
+    /* .howtouse.good_engineer .howtouse_firstimage{
+        width: 84%!important;
+    } */
+
+}
+
+@media screen and (max-width: 1100px){
+    /* .howtouse.good_engineer h3{
+        font-size: 1.3rem;
+    } */
+}
+
+@media screen and (max-width: 980px){
+    .haikei{
+        display: none;
+    }
+    .add_match_top .match_top{
+        margin: 0!important;
+        margin-left: 13%!important;
+    }
+    .skill_smartphone{
+        display:block!important;
+    }
+    .licence_smartphone{
+        display:block!important;
+    }
+    #skill_myprofile_input{
+        display:none!important;
+    }
+    #myprofile_skill{
+        display:none!important;
+    }
+    #licence_input{
+        display:none!important;
+    }
+    #licence{
+        display:none!important;
+    }
+    .line{
+        display: none;
+    }
+    .mail_detail{
+        font-size: 2.8rem!important;
+    }
+    .mail_detail_email{
+        padding: 3rem!important;
+    }
+    .mail_detail_email_disp{
+        font-size: 4rem;
+    }
+    .mail_detail_session{
+        font-size: 2rem;
+    }
+    .mail_detail_btn{
+        font-size: 4rem;
+    }
+    .header_sub {
+        display: none;
+    }
+    .match_top{
+        margin-left: 11%!important;
+    }
+    .help_message{
+        top: 29%;
+        font-size: 2rem;
+    }
+    .help_message2{
+        top: 71%!important;
+        left: 21%!important;
+        font-size: 2rem;
+        z-index: 40;
+    }
+    .help_close,
+    .help_close1,
+    .help_close2{
+        z-index: 15;
+        left: 82%;
+        top: 2%;
+        font-size: 9rem;
+    }
+    .profile_close{
+        z-index: 15;
+        left: 99%!important;
+        top: -13.5%!important;
+        font-size: 9rem!important;
+    }
+    .footer{
+        display: none;
+    }
+    .page_title.serach{
+        margin-top: 12rem;
+        margin-bottom: 3rem;
+        margin-left: -5rem;
+    }
+    .page_title.message_title{
+        margin-bottom: 3rem;
+    }
+    .top_title{
+        width: 100%;
+        z-index: 10;
+        background-color: #fff;
+    }
+    .top_title ul{
+        background-color: #ffe1ae24;
+    }
+    .matchuser_detaile{
+        width: 630px;
+        left: 50%;
+        top: 15%;
+    }
+    .matchuser_detaile .matchuser_profile{
+        font-size: 2.5rem;
+    }
+    .matchuser_detaile_prof{
+        left: 50%!important;
+        top: 90%!important;
+        width:630px;
+    }
+    .matchuser_detaile_prof_sample{
+        left: 50%!important;
+        top: 85%!important;
+        width:630px;
+    }
+    .matchuser_detaile_prof h6,
+    .matchuser_detaile_prof_sample h6{
+        font-size:3rem!important;
+    }
+    .good_btn,
+    .match_good_btn{
+        font-size: 2.5rem!important;
+        padding: 7px 35px!important;
+        width: 40%!important;
+    }
+    .matchuser_name{
+        font-size: 3rem;
+    }
+    .matchuser_age{
+        font-size: 2.5rem!important;
+    }
+    /* .far.fa-times-circle{
+        font-size: 5rem!important;
+    } */
+    #splash {
+        font-size: 3rem;
+        bottom: 53%;
+        left: 50%;
+    }
+    .smartphone_header{
+        display: inline-block;
+    }
+    .matchuser_skill{
+        font-size: 2.5rem!important;
+    }
+    .matchuser_licence{
+        font-size: 2.5rem!important;
+    }
+    .matchuser_workhistory{
+        font-size: 2.5rem!important; 
+    }
+    .matchuser_address{
+        font-size: 2.5rem!important;
+    }
+    .matchuser_occupation{
+        font-size: 2.5rem!important;
+    }
+    .help-title {
+        height: auto;
+        line-height: 50px;
+        font-size: 2.5rem;
+        top: -62px;
+        padding: 5px 30px;
+    }
+
+    .flash_message,
+    .login_message,
+    .top_message,
+    .add_message,
+    .match_message,
+    .mail_message{
+        font-size: 2.5rem;
+        bottom: 15%;
+    }
+
+    .col-8.offset-2.center{
+        flex: none;
+        max-width: unset;
+        margin-left: 0;
+    }
+
+    .error_name_form,
+    .error_pass_form{
+        margin:0 0 5% 15%!important;
+    }
+
+    .user_name_error,
+    .user_pass_error{
+        font-size: 2.8rem;
+    }
+
+    .matchuser_detaile .far.fa-times-circle{
+        top: -14%;
+    }
+
+    .description_top img{
+        width: 80%!important;
+    }
+
+    .description_concept{
+        font-size: 1.9rem!important;
+    }
+
+    .howtouse{
+        width: 70%!important;
+    }
+
+    .howtouse div img{
+        width: 80%!important;
+    }
+
+    .howtouse h3{
+        font-size: 2.5rem;
+    }
+
+    .howtouse_content{
+        font-size: 2rem!important;
+    }
+
+    .howtouse_firstimage{
+        height:auto!important;
+    }
+    
+    .description {
+        font-size: 3rem!important;  
+    }
+
+    .top_logo{
+        top: 10%;
+        right: 2%;
+        width: 95%!important;
+    }
+
+    .worries{
+        vertical-align: top;
+    }
+
+    .top_image{
+        width: 62%!important; 
+        height: auto!important;
+        margin-top: 34rem;
+        margin-left:0!important;
+    }
+    
+    .test_btn{
+        top: 20%;
+        right: 8%;
+    }
+
+    .test_login{
+        padding: 1rem 2rem!important;
+        width: 20rem;
+        height: 5rem;
+        font-size: 2rem;
+        border-radius: 3rem;
+    }
+
+    .pointer{
+        font-size: 5rem;
+        left: 20%;
+        top: 25%;
+    }
+
+    .add_match.pointer{
+        font-size: 5rem;
+        top: 25%;
+        left: 22%;
+    }
+
+    .add_match.pointer2{
+        font-size: 5rem;
+        top: 70%;
+        left: 60%;
+    }
+
+    .pointer2{
+        font-size: 5rem;
+        left: 65%;
+        top: 69%;
+    }
+
+    .pointer3{
+        font-size: 5rem;
+        left: 63%;
+        top: 82%;
+    }
+
+    .pointer4{
+        font-size: 5rem;
+        left: 27%;
+        top: 84%;
+    }
+
+    .show_menu{
+        display: inline-block;
+    }
+
+    .match_top.sarch_top,
+    .match_top.aite_top,
+    .message_top,
+    .profile_top,
+    .message_disp{
+        border-left: unset!important;
+    }
+
+    .user_login_btn{
+        bottom: 44%;
+        right: -5%;
+        width: auto!important;
+        margin-right: 5rem;
+        padding: 1.375rem 1.75rem;
+        width: 22rem!important;
+        height: 7rem;
+        font-size: 3rem!important;
+    }
+
+    /* .edit_detail_btn .edit_detail_top_btn{
+        width: auto!important;
+        margin-right: 5rem;
+        padding: 1.375rem 1.75rem;
+        width: 15rem!important;
+        font-size: 3rem!important;
+    } */
+
+    .user_add_btn{
+        bottom: 33%;
+        right: -5%;
+        width: auto!important;
+        margin-right: 5rem;
+        padding: 1.375rem 1.75rem;
+        width: 22rem!important;
+        height: 7rem;
+        font-size: 3rem!important;
+    }
+
+    
+    .explanation{
+        width: 97%!important;
+        margin-left: 0!important;;   
+    }
+
+    .user_detail_message1{
+        font-size: 4rem;
+        margin: 0 9%;
+    }
+
+    .user_detail_message2{
+        font-size: 4rem;
+        margin: 0 6%;
+        text-align: center;
+        line-height: 5rem;
+        top: 41%;
+        width: 90%;
+    }
+
+    .col-9.match_top.sarch_top{
+        max-width: 85%;
+    }
+
+    .match_top .match_user_occupation{
+        font-size: 1rem!important;
+    }
+
+    .match_top .match_user_age{
+        font-size: 1rem;
+    }
+
+    .profile_top .edit_address{
+        width: 70%!important;
+    }
+
+/* ///////////////////////// */
+
+
+/*        新規登録画面        */
+
+
+/* ///////////////////////// */
+
+.user_title{
+    font-size: 3rem;
+    width: 70%;
+}
+
+.skill_select,
+.licence_select {
+    font-size: 2.5rem;
+    width: 70%!important;
+    margin-top: 0.1rem;
+}
+
+.user_add_top{
+    flex: none;
+    max-width: none;
+    margin-left: 0;
+}
+
+.user_add_top .prof_image{
+    width: 70%!important;
+}
+
+.user_add_top .user_title{
+    width: 70%!important;
+}
+
+.user_add_top h2{
+    font-size: 4rem;
+    margin-top: 6rem!important;
+}
+
+.user_add_top form{
+    margin-top: 4rem;
+}
+
+.user_add_top .btn.btn-outline-info,
+.user_add_top .btn.btn-outline-dark{
+    padding: 1.375rem 1.75rem;
+    width: 15rem!important;
+    font-size: 3rem!important;
+}
+
+.user_add_top .btn.btn-outline-dark{
+    margin-right: 5rem;
+}
+
+.user_add_top .password_sub{
+    width: 70%!important;
+}
+
+.user_add_top .far.fa-image{
+    font-size: 3rem;
+}
+
+.user_name_input,
+.user_pass_input,
+.user_mail_input{
+    padding: 3rem 2rem;
+    font-size: 3rem;
+    width: 70%!important;
+}
+
+.user_name_input::placeholder,
+.user_mail_input::placeholder {
+    font-size: 2.5rem;
+}
+
+.password_sub{
+    font-size: 2rem!important;
+}
+
+.image_select{
+    font-size: 3rem;
+}
+
+.image_size{
+    font-size: 1.9rem!important;
+}
+
+.main_ul .header{
+    font-size: 2rem;
+    margin-top: 1rem!important;
+}
+
+ul li{
+    padding: 0 0.8rem;
+}
+
+ul.main_ul li a{
+    padding: 0.7rem 0.4rem 0.7rem 0.4rem;
+}
+
+.flex_btn{
+    width: 60%!important;
+    margin: 2rem 12rem 0!important;
+}
+
+.user_login_top .flex_btn{
+    margin: 5rem 12rem 0!important;
+}
+
+.edit_age,
+.edit_address,
+.edit_occupation,
+.edit_profile,
+.edit_workhistory{
+    font-size: 2.5rem;
+    width: 70%!important;
+    height: auto!important;
+}
+
+#skill_myprofile_input,
+#licence_input
+{
+    padding: 1rem 2rem;
+    font-size: 3rem;
+    width: 80%!important;
+}
+
+.sai{
+    font-size: 3rem;
+}
+
+.edit_detail_btn .edit_detail_top_btn{
+    width: auto!important;
+    margin-right: 5rem;
+    padding: 1.375rem 1.75rem;
+    width: 15rem!important;
+    font-size: 3rem!important;
+}
+
+.edit_detail_btn.flex_btn{
+    margin: 4rem 12rem 4rem 8rem!important
+}
+
+.match_box{
+    z-index: 5;
+    font-size: 5rem;
+}
+
+.match_box .box-title{
+    font-size: 2rem;
+}
+
+.three_good{
+    font-size: 3rem;
+}
+
+.welcome{
+    margin: 0px 15%;
+    line-height: 5rem;
+    font-size: 4rem;
+    top: 43%;
+}
+
+.edit_address,
+.edit_occupation,
+.edit_profile,
+#skill_myprofile_input,
+#licence_input,
+.edit_detail_top .background textarea::placeholder
+{
+font-size: 2.5rem;
+}
+
+img.my_preview {
+    width: 20rem;
+    height: 20rem;
+}
+
+.mail_finish{
+    margin: 35% 6%!important;
+}
+
+.mail_finish h2{
+    font-size:4rem;
+}
+
+/* ///////////////////////// */
+
+
+/*        ログイン画面        */
+
+
+/* ///////////////////////// */
+
+.edit_detail_top_tittle{
+    font-size: 4rem;
+    margin-top: 5rem;
+}
+
+.login_title{
+    font-size: 2rem;
+}
+
+.edit_detail_top{
+    margin-left: 10%!important;
+    height: auto!important;
+}
+
+.edit_detail_top .user_age,
+.edit_detail_top .user_address,
+.edit_detail_top .user_occupation{
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit_detail_top .col-3{
+    flex: unset;
+    max-width: none;
+}
+
+.edit_detail_top .col-7{
+    max-width: none;
+    margin-left: 0!important;
+    flex: unset;
+}
+
+.edit_detail_top .edit_profile{
+    width: 80%!important;
+}
+
+.edit_detail_top .edit_workhistory{
+    width: 80%!important;
+}
+
+.edit_detail_top .tag_tittle{
+    margin-top: 2rem;
+}
+
+.edit_detail_top .edit_age{
+    margin-top: 1rem;
+}
+
+.edit_detail_top .edit_address,
+.edit_detail_top .edit_occupation{
+    margin-top: 2rem;
+    width: 52%!important;
+    /* margin-right: 10.5rem; */
+}
+
+.edit_detail_top .user_age .sai{
+    margin-right: 7rem;
+    margin-top: 2rem;
+}
+
+.user_login_top{
+    flex: none;
+    max-width: unset;
+    margin-left: 0;
+}
+
+.user_login_top h2{
+    font-size: 4rem!important;
+    margin-top: 6rem!important;
+}
+
+.edit_detail_top_btn{
+    font-size: 2.5rem!important;
+}
+
+.user_login_top .flex_btn .edit_detail_top_btn{
+    padding: 1.375rem 1.75rem;
+    width: 18rem!important;
+    font-size: 3rem!important;
+}
+
+.user_login_top .flex_btn .submit_btn.edit_detail_top_btn{
+    margin-left: 5rem;
+}
+
+.btn.btn-outline-info.edit_detail_top_btn{
+    width: 186px;
+}
+
+.edit_detail_top_btn span{
+    font-size: 2rem!important;
+}
+
+.user_login_top .twitter_login{
+    font-size: 3rem;
+}
+
+/* .user_login_top .flex_btn{
+    margin: 0 20%!important;
+} */
+
+.user_login_top form{
+    margin-top: 4rem;
+}
+
+.user_login_top .btn-social-long-twitter{
+    margin-top: 3rem;
+}
+
+.user_name_error
+
+.error_name_form{
+    margin: 0 15%!important;
+}
+
+.edit_btns .profile_close.profile {
+    left: 0%!important;
+    top: -116.5%!important;
+}
+
+/* ///////////////////////// */
+
+
+/*         マッチ画面         */
+
+
+/* ///////////////////////// */
+
+.card{
+    width: 54%;
+    height: 38%;
+    left: 25%;
+    top: 27%;
+}
+.fa-image_range.fa{
+    padding: 2rem;
+    border-radius: 6rem;
+}
+.fa-image_range.fa:first-child {
+    margin-right: 13rem!important;
+}
+.fa-solid.fa-reply{
+    font-size: 5rem!important;
+}
+.matching_btn .fas.fa-thumbs-up{
+    font-size: 5rem!important;
+}
+.matching_btn{
+    left: 25%;
+    top: 73%;
+}
+.card .profile_name {
+    font-size: 3rem;
+    margin-left: 2.5rem;
+}
+.page_title{
+    font-size: 4rem;
+    margin-top: 15rem;
+}
+.match_top .page_title{
+    margin-left: -2rem;
+}
+.fa-solid.fa-circle-question.help_btn{
+    font-size: 6rem!important;
+    top:12%!important;
+}
+.top_link{
+    font-size: 4rem;
+}
+.top_link a img{
+    width: 40%!important;
+}
+a.top_link_header_login img{
+    width: 40%!important;
+    margin-left: 2.5rem;
+}
+.match_top{
+    margin-bottom: 9rem;
+}
+.match_user .fa-regular.fa-thumbs-up{
+    font-size: 8rem!important;
+    margin: 30% 0!important;
+}
+.match_user .fa-regular.fa-thumbs-up div{
+    font-size: 3.8rem!important;
+}
+.match_user .fa-solid.fa-reply{
+    font-size: 8rem!important;
+    margin: 30% 0!important;
+}
+.match_user .fa-solid.fa-reply div{
+    font-size: 3.8rem!important;
+}
+.help_message{
+    left: 30%;
+}
+.help_message3{
+    top: 88%;
+    left: 35%;
+    font-size: 2rem;
+}
+
+.help_message4{
+    top: 88%;
+    left: 7%;
+    font-size: 2rem;
+}
+
+/* ///////////////////////// */
+
+
+/*     メッセージリスト画面    */
+
+
+/* ///////////////////////// */
+.destination_user_list {
+    border-radius: 7rem;
+    font-size: 2rem;
+    padding: 1rem 0.5rem;
+    margin: 1.5rem 0 1.5rem 1.5rem;
+}
+.message_top{
+    margin-left: 5%!important;
+    margin-bottom: 18%!important;
+}
+.col-9.message_top{
+    max-width: 88%;
+}
+.message_user_img{
+    width: 5.5rem;
+    height: 5.5rem;
+}
+.new_message_time{
+    font-size: 1.5rem;
+}
+.far.fa-trash-alt{
+    font-size: 2rem;
+}
+#message_count{
+    font-size: 1.5rem;
+    margin-top: 0.4rem!important;
+}
+.destination_user_list .destination_user_info .destination_user_info_detail .destination_user_name {
+    font-size: 2rem;
+}
+/* ///////////////////////// */
+
+
+/*       メッセージ画面       */
+
+
+/* ///////////////////////// */
+.message_disp{
+    margin-left:0!important;
+    max-width: none;
+}
+.message_disp .message{
+    margin-bottom: 13rem;
+}
+.message_disp .message_disp_div{
+    margin-top: 8rem;
+    height: 7rem!important;
+}
+.message_disp .message_disp_name{
+    font-size:4rem!important;
+    width:100%!important;
+}
+.message_disp .message{
+    margin-top: 17rem;
+}
+.message_disp .fa-solid.fa-angle-left{
+    font-size: 4rem!important;
+    margin-left: 2rem;
+}
+.message_disp .message_created_at{
+    font-size: 2rem;
+}
+.message_disp .my_message p{
+    font-size: 2rem;
+}
+.message_disp .my_message .says{
+    font-size: 2rem;
+}
+.message_disp .mycomment .message_user_img{
+    width: 5rem;
+    height: 5rem;
+}
+
+.message .my_message .left .message_user_img{
+    width: 5rem;
+    height: 5rem;
+}
+
+.message_process .message_text{
+    text-align: center;
+}
+
+.message_process .message_text .counter{
+    font-size: 2rem;
+}
+
+.message_process #message_counter{
+    width: 80%;
+    height: auto;
+    display: inline-block;
+    font-size: 2.5rem;
+}
+
+.message_process #message_counter::placeholder{
+    font-size: 2.5rem;
+}
+
+.btn.btn-outline-primary.message_submit{
+    font-size: 4rem;
+}
+
+.far.fa-image{
+    font-size: 3rem;
+}
+
+.fa-solid.fa-angle-left{
+    margin-top: 0.8rem!important;
+}
+/* ///////////////////////// */
+
+
+/*     プロフィール画面    */
+
+
+/* ///////////////////////// */
+.tag_tittle{
+    font-size: 3rem;
+}
+.profile_top{
+    width: 100%!important;
+    margin-left: 0%!important;
+}
+.profile_top .user_age,
+.profile_top .user_address,
+.profile_top .user_occupation,
+.profile_top .skill_tag,
+.profile_top .licence_tag,
+.profile_top .user_profile,
+.profile_top .user_workhistory
+.profile_top .user_address
+{
+    font-size: 2.5rem;
+}
+
+.profile_top .user_address,
+.profile_top .user_occupation{
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile_top .user_age .tag_tittle,
+.profile_top .user_address .tag_tittle,
+.profile_top .user_address .edit_address,
+.profile_top .user_occupation .tag_tittle,
+.profile_top .user_occupation .edit_occupation{
+    display: inline!important;
+}
+
+
+
+.profile_top .col-3{
+    flex: 100%;
+    max-width: 100%;
+}
+.profile_top .col-4{
+    flex: none;
+    max-width: none;
+}
+
+.profile_top .col-8{
+    margin-top: 0!important;
+    margin-left: 0!important;
+    flex: none;
+    max-width: unset;
+}
+.profile_top .profile_name_prof{
+    font-size: 4rem;
+}
+.profile_top .row{
+    margin-bottom: 13rem;
+}
+.profile_top .form .row{
+    margin-bottom: 20rem;
+}
+.profile_top .user_name_narrow{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16rem;
+}
+.profile_top .user_name{
+    display: none;
+}
+.profile_top .user_name_narrow{
+    display: block!important;
+}
+.profile_top .form .user_name_narrow{
+    margin-bottom: 2rem;
+}
+
+.profile_top .form .user_age,
+.profile_top .form .user_address,
+.profile_top .form .user_occupation{
+    margin-bottom: 2rem;
+    margin-top: 1rem!important;
+}
+
+.profile_top .user_age,
+.profile_top .user_address,
+.profile_top .user_occupation{
+    margin-top: 1rem!important;
+}
+.profile_top .age,
+.profile_top .address,
+.profile_top .occupation
+{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0!important;
+}
+.mypage{
+    margin-top: 2rem!important;
+    width: 20rem!important;
+    height: 20rem!important;
+}
+
+.profile_top_form{
+    margin-left: -7rem;
+}
+
+.profile_edit_btn{
+    font-size: 2.5rem;
+    right: 3%;
+}
+
+.editing_profile_img{
+    margin-top: 2rem!important;
+    width: 20rem!important;
+    height: 20rem!important;
+}
+
+.edit_name{
+    font-size: 3rem;
+    width: 70%!important;
+    margin-top: 0.1rem;
+}
+
+.edit_age{
+    width: 20%!important;
+    margin-left: 26rem;
+}
+
+.edit_address{
+    width: 27.5%!important;
+}
+
+.btn.btn-outline-dark.edit_done,
+.btn.btn-outline-dark.profile_close{
+    display: block;
+    padding: 1.375rem 1.75rem;
+    width: 15rem!important;
+    font-size: 3rem!important;
+}
+
+.profile_top .btn.btn-outline-dark.profile_close{
+    width: 217px;
+}
+
+.slide_prof .edit_profile_img .fa-image_range {
+    font-size: 3rem;
+}
+
+.edit_profile_img .fa-image_range{
+    width: 9rem;
+    height: 9rem;
+}
+
+.edit_profile_img .far.fa-image{
+    font-size: 3rem;    
+}
+
+.edit_profile_img label{
+    top: 14%!important;
+    left: 14%!important;
+}
+
+.edit_profile_img .editing_profile_img{
+    margin-bottom: 5rem;
+}
+
+.profile_top .far.fa-times-circle.skill_myprofile,
+.profile_top .far.fa-times-circle.licence{
+    font-size: 2.5rem!important;
+}
+
+.profile_top_form .fas.fa-plus.skill_btn,
+.profile_top_form .fas.fa-plus.licence_btn,
+.profile_top_form .fas.fa-plus.myprofile_skill_btn,
+.profile_top_form .fas.fa-plus.myprofile_licence_btn,
+.profile_top_form .fas.fa-minus.licence_btn,
+.profile_top_form .fas.fa-minus.skill_btn{
+    font-size: 3rem;
+}
+
+.profile_top_form .user_workhistory{
+    font-size: 2.5rem;
+}
+
+.profile_top_form .profile_top{
+    word-wrap: break-word;
+}
+
+.profile_top_form .profile_top .btn.btn-outline-dark.edit_done,
+.profile_top_form .profile_top .btn.btn-outline-dark.profile_close{
+    font-size: 3rem;
+    margin-top: 1rem;
+}
+
+.edit_btns{
+    right: 8%;
+}
+
+.profile_top_form .profile_top .page_title{
+    margin-left: 2.2rem;
+}
+
+.edit_occupation::placeholder{
+    font-size: 2rem;
+}
+
+}
