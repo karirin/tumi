@@ -15,6 +15,7 @@ use App\Models\Message_relation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
+use DateTime;
 
 class GoalController extends Controller
 {
@@ -35,22 +36,36 @@ class GoalController extends Controller
         }
         $skills = explode(" ", $current_user->skill);
         $licences = explode(" ", $current_user->licence);
-        $match_flg = Match::where('matched_user_id', $current_user->id)->where('match_flg', '!=', 1)->where('unmatch_flg', '!=', 1)->first();
+        $match_flg = DB::table('matches')->where('matched_user_id', $current_user->id)->where('match_flg', '!=', 1)->where('unmatch_flg', '!=', 1)->first();
         $user = new User;
         if ($request->file('image') != '') {
             $file_name = $request->file('image')->getClientOriginalName();
             $request->file('image')->storeAs('public/sample', $file_name);
             $form = "";
+            $date = new DateTime();
+            $year = $date->format('Y');
+            $mouth = $date->format('m');
+            $day = $date->format('d');
             $form = [
                 'tittle' => $request->tumi_tittle,
                 'image' => 'storage/sample/' . $file_name,
-                'user_id' => $current_user->id
+                'user_id' => $current_user->id,
+                'year' => $year,
+                'mouth' => $mouth,
+                'day' => $day
             ];
         } else {
+            $date = new DateTime();
+            $year = $date->format('Y');
+            $mouth = $date->format('m');
+            $day = $date->format('d');
             $form = [
                 'tittle' => $request->tumi_tittle,
                 'image' => 'storage/sample/noimage.jpg',
-                'user_id' => $current_user->id
+                'user_id' => $current_user->id,
+                'year' => $year,
+                'mouth' => $mouth,
+                'day' => $day
             ];
         }
         $action = session()->get($this->method_action_key);

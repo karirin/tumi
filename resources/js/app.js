@@ -5,7 +5,6 @@
  */
 
 require('./bootstrap');
-require('./markdown.js');
 
 window.Vue = require('vue');
 

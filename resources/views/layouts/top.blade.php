@@ -1,17 +1,25 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     @if(app('env') == 'production')
     <link href="{{ secure_asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ secure_asset('css/match.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/tumi.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/tumi.css') }}" rel="stylesheet">
     @else
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/match.css') }}" rel="stylesheet">
     <link href="{{ asset('css/tumi.css') }}" rel="stylesheet">
     @endif
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style src='highlightjs/styles/dracula.css'></style>
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4898800212808837" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
@@ -104,6 +112,7 @@
 
     <p class="match_message">
     </p>
+
     <div class="footer">
         <a href="https://forms.gle/eLx24ykodQaRKqiV9">お問い合わせ</a> / <a href="{{ asset('privacy_poricy') }}">プライバシーポリシー</a> / <a href="{{ asset('terms_of_service') }}">利用規約</a> /
         <a href="https://twitter.com/ryoya3948">Twitter</a> / <span style="color: white;">© 2023 Pair Code.</span>
@@ -111,10 +120,15 @@
     <script src=" https://code.jquery.com/jquery-3.4.1.min.js "></script>
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/smoothness/jquery-ui.css" />
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.4.0/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
     <script src="{{ asset('/js/common.js') }}"></script>
     <script src="{{ asset('/js/match.js') }}"></script>
     <script src="{{ asset('/js/tumi.js') }}"></script>
+
     @show
 </body>
+
 
 </html>

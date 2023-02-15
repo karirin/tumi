@@ -72,7 +72,6 @@ function ImageToBase64(img, mime_type) {
     canvas.height = img.height;
     // Draw Image
     var ctx = canvas.getContext('2d');
-    console.log(img);
     ctx.drawImage(img, 0, 0);
     // To Base64
     return canvas.toDataURL(mime_type);
@@ -512,17 +511,17 @@ var skill_list = [
     'Vue.js'
 ];
 
-$(function() {
-    $("#skill_input").autocomplete({
-        source: skill_list,
-    });
-});
+// $(function() {
+//     $("#skill_input").autocomplete({
+//         source: skill_list,
+//     });
+// });
 
-$(function() {
-    $("#skill_input_narrow").autocomplete({
-        source: skill_list,
-    });
-});
+// $(function() {
+//     $("#skill_input_narrow").autocomplete({
+//         source: skill_list,
+//     });
+// });
 
 // $(function() {
 //     $("#skill_input_narrower").autocomplete({
@@ -989,11 +988,11 @@ $(document).on('click', '.post_process_btn', function() {
 //     //ここにAutocompleteのオプションを設定
 // });
 
-$(function() {
-    $("#skill_myprofile_input").autocomplete({
-        source: skill_list,
-    });
-});
+// $(function() {
+//     $("#skill_myprofile_input").autocomplete({
+//         source: skill_list,
+//     });
+// });
 
 if (document.getElementById('skill_myprofile_input') != null) {
     let skill_myprofile_input = document.getElementById('skill_myprofile_input'),
@@ -1176,17 +1175,17 @@ const licence_list = new Array(
     '情報セキュリティスペシャリスト'
 );
 
-$(function() {
-    $("#licence_input").autocomplete({
-        source: licence_list,
-    });
-});
+// $(function() {
+//     $("#licence_input").autocomplete({
+//         source: licence_list,
+//     });
+// });
 
-$(function() {
-    $("#licence_input_narrow").autocomplete({
-        source: licence_list,
-    });
-});
+// $(function() {
+//     $("#licence_input_narrow").autocomplete({
+//         source: licence_list,
+//     });
+// });
 
 // $(function() {
 //     $("#licence_input_narrower").autocomplete({

@@ -6,6 +6,10 @@
 
 /* ///////////////////////// */
 
+img{
+    object-fit: cover;
+}
+
 .tumi_plus,
 .goal_plus{
     font-size: 5rem;
@@ -20,24 +24,23 @@
 }
 
 .tumi_add{
-    width: 50%;
-    height: 64%;
+    width: 70%;
+    height: auto;
     background-color: #e2f3e6;
-    top: 15%;
-    left: 25%;
+    top: 2%;
+    left: 14.5%;
     position: absolute;
     border-radius: 1rem;
-    border: solid #e3e3e3 3px;
     padding: 1.5rem;
     z-index: 10;
 }
 
 .tumi_add_close{
     z-index: 15;
-    font-size: 3rem;
+    font-size: 6rem;
     position: absolute;
-    left: 70%;
-    top: 5%;
+    top: -11%;
+    right: -8%;
 }
 
 .tumi_add_close:hover{
@@ -46,7 +49,7 @@
 
 .tumi{
     background-color:#fff;
-    border: solid #000 1px;
+    border: solid #ccc 1px;
     border-radius: 8px;
     width: 20rem;
     height: 20rem;
@@ -54,28 +57,52 @@
     margin-right: 1rem;
     margin-bottom: 3rem;
     box-shadow: 0 10px 25px 0 rgb(0 0 0 / 20%);
+    vertical-align: top;
+}
+
+.tumi:hover{
+    opacity: 0.8;
 }
 
 .tumi .tumi_text
 {
-    display: table;
+    height: 6rem;
+    display: block;
+    overflow: hidden;
+    word-wrap: break-word;
+    margin-top: 0.5rem;
+    white-space: pre-line;
+}
+
+.tumi .tumi_text p
+{
+    margin-bottom:0;
 }
 
 .tumi .tumi_image img{
     border-radius: 8px 8px 0 0;
     width: 100%;
-    height: 60%;
+    height: 43%;
     display: table;
 }
 
 .tumi_tittle{
-    text-align: center;
+    border-bottom: solid 3px #a3d3a6;
+    position: relative;
+    margin-left: 5%;
+    margin-bottom: 2%;
+}
+
+.tumi_tittle:after {
+    position: absolute;
+    content: " ";
+    display: block;
+    border-bottom: solid 3px #307e48;
+    bottom: -3px;
+    width: 20%;
 }
 
 .tumi_submit{
-    position: absolute;
-    bottom: 5%;
-    right: 5%;
     font-size: 1.5rem;
 }
 
@@ -123,13 +150,40 @@
     height: 50px;
     border-radius: 50%;
     top: 50%;
-    /* border: dashed 1px white; */
+    border: dashed 1px white;
     left: -15px;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     z-index: -1;
     margin: 0 43%;
   } */
+
+.goal_text{
+    white-space: pre-line;
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    height: 65%;
+}
+
+.goal_tittle{
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+
+.serach.tumi_tittle{
+    font-size: 2rem;
+}
+
+.image_label{
+    vertical-align: top;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 2rem;
+}
+
+.image_label:hover{
+    opacity: 0.8;
+}
 
 /* ///////////////////////// */
 
@@ -143,27 +197,71 @@
     display: none;
 }
 
-.tumi_detail .tumi_img{
-    width: 50%;
-}
-
 .tumi_detail_close{
     z-index: 15;
-    font-size: 3rem;
+    font-size: 6rem;
     position: absolute;
-    left: 71%;
-    top: 5%;
+    left: 91%;
+    top: 2%;
 }
 
 .tumi_detail{
-    width: 50%;
+    width: 70%;
     height: auto;
     background-color: #e2f3e6;
-    top: 15%;
-    left: 25%;
+    top: 3%;
+    left: 15%;
     position: absolute;
     border-radius: 1rem;
-    border: solid #e3e3e3 3px;
     padding: 1.5rem;
     z-index: 10;
 }
+
+#preview-field{
+    display: inline-block;
+    vertical-align: top;
+    width: 104%;
+    height: 66%;
+    word-wrap: break-word;
+    white-space: pre-line;
+    border: 1px solid #c9c9c9;;
+    background-color: #fff;
+    overflow:scroll;
+    overflow-x: hidden;
+    padding: 0.375rem 0.75rem;
+}
+
+.tumi_detail_edit{
+    height: auto;
+}
+
+.tumi_text_add{
+    width: 100%;
+    height: 18rem!important;
+    border-radius: 0;
+    resize: none;
+}
+
+#edit_tumi_text{
+    width: 100%; 
+    height: 24rem;
+    border-radius: unset;
+    resize: none;
+}
+
+.tumi .tumi_image.goal_image img{
+    border-radius: 8px 0 0 8px;
+}
+
+.fa-regular.fa-circle-xmark.tumi_detail_close:hover{
+    opacity: 0.8;
+}
+
+.tumi_text_detail{
+    white-space: pre-line;
+}
+
+/* 
+#preview-field::-webkit-scrollbar{
+    display:none;
+  } */

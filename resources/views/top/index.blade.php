@@ -6,18 +6,26 @@
 @section('content')
 @if (Auth::check())
 <div id="splash"></div>
-<div class="match_top sarch_top col-10 offset-1" style="display:none;">
-    <h3 class="page_title serach">積み上げ目標</h3>
-    <div class="col-9 match_top sarch_top" style="padding-left: 3rem;display:none;">
+<div class="row match_top" style="display:none;">
+    <p class="serach tumi_tittle">積み上げ目標</p>
+    <div class="sarch_top col-10 offset-1">
         <i class="fa-solid fa-circle-question help_btn"></i>
         <i class="fa-solid fa-circle-question help_btn"></i>
         <i class="fa-regular fa-square-plus goal_plus"></i>
         <input type="hidden" class="sample_user">
         @foreach ($goals as $goal)
-        <a href="/tumi/tumi?goal_id={{$goal->id}}" style="vertical-align: top;">
-            <div class="tumi">
-                <span class="tumi_image"><img src="{{asset($goal->image)}}"></span>
-                <span class="tumi_tittle">{{$goal->tittle}}</span>
+        <a href="/tumi/tumi?goal_id={{$goal->id}}" style="vertical-align: top;color: #000;">
+            <div class="tumi" style="width: unset;height: unset;">
+                <div class="row">
+                    <div class="col-5" style="padding: 0;">
+                        <span class="tumi_image goal_image"><img style="height: unset;" src="{{asset($goal->image)}}"></span>
+                    </div>
+                    <div class="col-7" style="padding: 1rem;">
+                        <span class="goal_tittle">{{$goal->tittle}}</span>
+                        <div class="goal_text">{{$goal->text}}</div>
+                        <div style="text-align:right;"><i class="fa-solid fa-clock" style="margin-right: 0.2rem;"></i><span style="color: #7b7b7b;">{{$goal->year}}/{{$goal->mouth}}/{{$goal->day}}</span></div>
+                    </div>
+                </div>
             </div>
         </a>
         @endforeach
@@ -319,7 +327,7 @@
         }
 
         setTimeout(function() {
-            $(".match_top").css("display", "inline-block");
+            $(".match_top").fadeIn();
             $(".maintop_page").css("display", "inline-block");
         }, 840);
 
@@ -470,6 +478,22 @@
                 $('#sample_user').replaceWith('<input type="hidden" class="sample_user">');
                 $('.match_user:first').fadeIn();
                 $('.matchuser_detaile_prof_sample').attr('class', 'matchuser_detaile_prof');
+            });
+        });
+
+        $(document).on('click', '.goal_plus', function() {
+            $('.tumi_add').fadeIn();
+            $('.tumi_add_close').fadeIn();
+            $('.modal_help').fadeIn();
+            $(document).on('click', '.tumi_add_close', function() {
+                $('.tumi_add').fadeOut();
+                $('.tumi_add_close').fadeOut();
+                $('.modal_help').fadeOut();
+            });
+            $(document).on('click', '.modal_help', function() {
+                $('.tumi_add').fadeOut();
+                $('.tumi_add_close').fadeOut();
+                $('.modal_help').fadeOut();
             });
         });
     </script>

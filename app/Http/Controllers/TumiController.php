@@ -116,4 +116,14 @@ class TumiController extends Controller
         $tumi_text = $request->tumi_text;
         DB::update('update tumis set text = "' . $tumi_text . '" where id = ' . $tumi_id);
     }
+
+    public function ajax_edit_done(Request $request)
+    {
+        $current_user = Auth::user();
+        $users = User::get();
+        $tumi_id = $request->tumi_id;
+        $tumi_text = $request->tumi_text;
+        $tumi_tittle = $request->tumi_tittle;
+        DB::update('update tumis set text = "' . $tumi_text . '",tittle = "' . $tumi_tittle . '" where id = ' . $tumi_id);
+    }
 }

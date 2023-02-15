@@ -15,6 +15,10 @@ html{
     height: auto;
 }
 
+image{
+    object-fit: cover;
+}
+
 a {
     text-decoration-line: none;
 }
@@ -489,7 +493,7 @@ nav.navbar.navbar-dark {
 
 #splash {
     /*fixedで全面に固定*/
-    bottom: 57%;
+    bottom: 54%;
     left: 51%;
     position: absolute;
     z-index: 999;
@@ -795,7 +799,7 @@ nav.navbar.navbar-dark {
     right: 5%;
 }
 
-.edit_profile_img .fa-image_range {
+.fa-image_range {
     width: 3rem;
     height: 3rem;
     top: 25%;
@@ -803,7 +807,7 @@ nav.navbar.navbar-dark {
     border-radius: 1rem;
 }
 
-.edit_profile_img .fa-image_range:hover {
+.fa-image_range:hover {
     background-color: rgb(182, 182, 182);
 }
 
@@ -1750,11 +1754,10 @@ img.mypage {
 
 img.my_preview {
     display: none;
-    width: 7rem;
+    width: 14rem;
     height: 7rem;
     border: solid 0.1rem rgb(163, 163, 163);
     padding: 0.5rem;
-    margin-top: 1rem;
 }
 
 .skill_tag {
@@ -1973,7 +1976,7 @@ img.my_preview {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: rgba(152, 152, 152, 0.7);
+    background-color: rgba(0, 0, 0, 0.3);
     width: 100%;
     height: 100%;
     z-index: 10;
@@ -1985,7 +1988,7 @@ img.my_preview {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: rgba(152, 152, 152, 0.7);
+    background-color: rgba(0, 0, 0, 0.3);
     width: 100%;
     height: 100%;
     z-index: 9;
@@ -2339,6 +2342,9 @@ img.preview {
     }
     .myprofile .profile.editing .profile_detail {
         margin-top: 40px;
+    }
+    .content{
+        height: 94%;
     }
 }
 

@@ -30,6 +30,7 @@ Route::post('tumi/add', 'TumiController@add');
 Route::get('tumi/add', 'TumiController@add');
 Route::post('/ajax_edit_tittle', 'TumiController@ajax_edit_tittle');
 Route::post('/ajax_edit_text', 'TumiController@ajax_edit_text');
+Route::post('/ajax_edit_done', 'TumiController@ajax_edit_done');
 Route::post('goal/add', 'GoalController@add');
 
 Route::get('user/login', 'UserController@login');
