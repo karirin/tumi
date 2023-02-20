@@ -37,29 +37,36 @@
     <i class="fa-regular fa-circle-xmark help_close2" style="display: none;"></i>
     <i class="fa-regular fa-circle-xmark tumi_add_close" style="display: none;"></i>
     <div class="tumi_add" style="display:none;">
-        <form method="post" action="{{ asset('goal/add') }}" enctype="multipart/form-data">
+        <form method="post" action="{{ asset('goal/add') }}" enctype="multipart/form-data" style="margin-bottom: 0;">
             @csrf
-            <div class="row">
-                <div class="col-10 offset-1">
-                    <div>タイトル</div>
-                    <input type="text" name="tumi_tittle" class="tumi_tittle_add">
+            <div class="row" style="height: 92%;" id="top_app">
+                <div class="col-6" style="padding:0;max-width: 49%;">
+                    <div style="font-size:1.3rem;">タイトル</div>
+                    <input type="text" name="tumi_tittle" class="tumi_tittle_add form-control">
                     <div class="error_text_form" style="height: 27px;text-align:left;margin: 0 20%;">
                         <span class="tumi_tittle_error" style="display:none;color: #dc3545;">タイトルを入力してください</span>
                     </div>
-
-                    <div>画像</div>
-                    <div class=" post_btn" style="justify-content: unset;">
-                        <label>
-                            <i class="far fa-image"></i>
-                            <input type="file" name="image" id="my_image" style="display:none;">
-                        </label>
+                    <div style="font-size:1.3rem;">目標内容</div>
+                    <textarea type="text" name="tumi_text" id="edit_tumi_text input-field" class="tumi_text_add form-control" v-model="input"></textarea>
+                    <div class="error_text_form" style="height: 27px;text-align:left;margin: 0 20%;">
+                        <span class="tumi_text_error" style="display:none;color: #dc3545;">目標内容を入力してください</span>
                     </div>
-                    <div class="image_size" style="font-size:0.9rem;">※（縦横200px×200px以上推奨、5MB未満）</div>
-                    <p class="preview_img"><img class="my_preview"></p>
+                    <div style="font-size: 1.3rem;">画像</div>
+                    <label class="image_label">
+                        <i class="far fa-image"></i>
+                        <input type="file" name="image" id="my_image" style="display:none;">
+                    </label>
+                    <p class="preview_img" style="display: inline-block;"><img class="my_preview" style="margin-left: 3rem;margin-top: -1rem;"></p>
                     <input type="button" id="my_clear" value="ファイルをクリアする">
                 </div>
+                <div class="col-6" style="padding:0;max-width: 49%;">
+                    <div style="margin-top: 6rem;"><i class="fa-solid fa-eye" style="margin-right: 0.2rem;font-size: 1.3rem;"></i><span style="font-size:1.3rem;">プレビュー</span></div>
+                    <div id="preview-field" class="add_preview-field" v-html="convertMarkdown" style="height: 18rem;"></div>
+                </div>
             </div>
-            <button class="btn btn-outline-primary tumi_submit" name="post" value="post" id="post">送信</button>
+            <div class="tumi_editbtn">
+                <button class="btn btn-outline-dark tumi_submit" style="z-index: 10; position: relative;" name="post" value="post" id="post">送信</button>
+            </div>
         </form>
     </div>
     <div class="help_message" style="display:none;">
@@ -169,6 +176,59 @@
     @section('footer')
     @parent
     <script>
+        setTimeout(function() {
+            $(".match_top").fadeIn();
+            $(".maintop_page").css("display", "inline-block");
+        }, 840);
+
+        $(document).on('change', '#my_image', function(e) {
+            var reader = new FileReader();
+            $(".my_preview").fadeIn();
+            reader.onload = function(e) {
+                $(".my_preview").attr('src', e.target.result);
+            }
+            reader.readAsDataURL(e.target.files[0]);
+        });
+
+        $(document).on('click', '.goal_plus', function() {
+            $('.tumi_add').fadeIn();
+            $('.tumi_add_close').fadeIn();
+            $('.modal_help').fadeIn();
+            $(document).on('click', '.tumi_add_close', function() {
+                $('.tumi_add').fadeOut();
+                $('.tumi_add_close').fadeOut();
+                $('.modal_help').fadeOut();
+            });
+            $(document).on('click', '.modal_help', function() {
+                $('.tumi_add').fadeOut();
+                $('.tumi_add_close').fadeOut();
+                $('.modal_help').fadeOut();
+            });
+        });
+
+        new Vue({
+
+            el: '#top_app', // index.htmlでid="app"となっている要素（エレメント）を指定
+            data: {
+                input: '' // index.htmlでv-model="input"が付与されている要素と双方向データバインディングされている。
+            },
+            // created: function() {
+            //     marked.setOptions({
+            //         langPrefix: '',
+            //         highlight: function(code, lang) {
+            //             return hljs.highlightAuto(code, [lang]).value
+            //         }
+            //     });
+            // },
+            computed: {
+                convertMarkdown: function() {
+                    // index.htmlでv-html="convertMarkdown"が付与されている要素（エレメント）とバイディングされている。
+                    // 入力されたデータをHTMLに変換して表示させる。
+                    return marked(this.input);
+                }
+            }
+        })
+
         if ($('.flg').val() == '') {
             $.ajaxSetup({
                 headers: {
@@ -326,11 +386,6 @@
             }).fail(function() {});
         }
 
-        setTimeout(function() {
-            $(".match_top").fadeIn();
-            $(".maintop_page").css("display", "inline-block");
-        }, 840);
-
         // ヘルプボタンクリック時
         $(document).on('click', '.help_btn', function() {
             $('.match_user:first').hide();
@@ -478,22 +533,6 @@
                 $('#sample_user').replaceWith('<input type="hidden" class="sample_user">');
                 $('.match_user:first').fadeIn();
                 $('.matchuser_detaile_prof_sample').attr('class', 'matchuser_detaile_prof');
-            });
-        });
-
-        $(document).on('click', '.goal_plus', function() {
-            $('.tumi_add').fadeIn();
-            $('.tumi_add_close').fadeIn();
-            $('.modal_help').fadeIn();
-            $(document).on('click', '.tumi_add_close', function() {
-                $('.tumi_add').fadeOut();
-                $('.tumi_add_close').fadeOut();
-                $('.modal_help').fadeOut();
-            });
-            $(document).on('click', '.modal_help', function() {
-                $('.tumi_add').fadeOut();
-                $('.tumi_add_close').fadeOut();
-                $('.modal_help').fadeOut();
             });
         });
     </script>

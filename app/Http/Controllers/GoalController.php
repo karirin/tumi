@@ -48,6 +48,7 @@ class GoalController extends Controller
             $day = $date->format('d');
             $form = [
                 'tittle' => $request->tumi_tittle,
+                'text' => $request->tumi_text,
                 'image' => 'storage/sample/' . $file_name,
                 'user_id' => $current_user->id,
                 'year' => $year,
@@ -61,6 +62,7 @@ class GoalController extends Controller
             $day = $date->format('d');
             $form = [
                 'tittle' => $request->tumi_tittle,
+                'text' => $request->tumi_text,
                 'image' => 'storage/sample/noimage.jpg',
                 'user_id' => $current_user->id,
                 'year' => $year,

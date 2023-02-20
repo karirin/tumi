@@ -17,9 +17,10 @@
             <div id="tumi_{{$tumi->id}}">
                 <span class="tumi_image"><img src="{{asset($tumi->image)}}"></span>
                 <div style="padding: 0.5rem;">
-                    <div style="color: #7b7b7b;"><i class="fa-solid fa-clock" style="margin-right: 0.2rem;"></i>{{$tumi->year}}/{{$tumi->mouth}}/{{$tumi->day}}</div>
+                    <div class="tumi_created" style="color: #7b7b7b;"><i class="fa-solid fa-clock" style="margin-right: 0.2rem;"></i>{{$tumi->year}}/{{$tumi->mouth}}/{{$tumi->day}}</div>
                     <div id="tumi_tittle" style="font-weight: bold;">{{$tumi->tittle}}</div>
                     <span class="tumi_text">{!! GitDown::parseAndCache($tumi->text) !!}</span>
+                    <input type="hidden" class="tumi_markdown_text" value="{{$tumi->text}}">
                 </div>
             </div>
         </div>
@@ -99,9 +100,12 @@
         <div style="font-size: 1.3rem;">積み上げ内容</div>
         <div class="tumi_text_detail"></div>
         <div style="font-size: 1.3rem;">画像</div>
-        <img class="tumi_img" style="width: 30%;">
+        <div>
+            <img class="tumi_img" style="width: 30%;">
+        </div>
+        <div class="tumi_date"></div>
         <input type="hidden" name="tumi_id" class="tumi_id" value>
-        <div style="text-align: right;">
+        <div class="tumi_editbtn">
             <button class="btn btn btn-outline-dark edit_tumi_btn" type="button" style="font-size: 1.5rem;">編集</button>
         </div>
     </div>
@@ -114,6 +118,8 @@
                     <span class="tumi_tittle_error" style="display:none;color: #dc3545;">タイトルを入力してください</span>
                 </div>
                 <div style="font-size:1.3rem;">積み上げ内容</div>
+                <!-- <div class="edit_tumi_text">
+                </div> -->
                 <textarea type="text" name="text" id="edit_tumi_text" class="edit_tumi_text form-control" style="width: 100%;height: 19.2rem;" id="input-field" v-model="input"></textarea>
                 <div style="font-size:1.3rem;margin-top: 1rem;margin-bottom: 1rem;">画像</div>
                 <div>
@@ -131,32 +137,19 @@
                 <div id="preview-field" class="edit_preview-field" v-html="convertMarkdown" style="height: 19.3rem;"></div>
             </div>
         </div>
-        <div style="text-align: right;">
+        <div class="tumi_editbtn">
             <button class="btn btn btn-outline-dark return_btn" type="button" style="font-size: 1.5rem;margin-right: 1.5rem;">戻る</button>
             <button class="btn btn btn-outline-dark edit_tumi_done" type="button" style="font-size: 1.5rem;">更新</button>
         </div>
     </div>
 </div>
-<style>
-    .scroll-area {
-        overflow: scroll;
-        height: 200px;
-        border: 1px solid black;
-        width: 50%;
-    }
-
-    .box {
-        width: 200px;
-        height: 200px;
-        background: orange;
-        margin: 20px;
-        overflow: scroll;
-    }
-</style>
 @endsection
 @section('footer')
 @parent
 <script>
+    $(window).on('load', function() {
+        //$('html, body').scrollTop(0);
+    });
     $('.edit_tumi_text').scroll(function() {
         console.log("scroll!testtest");
     });
@@ -169,16 +162,16 @@
     //var scrollDataList = $('.scrollDataList');
 
     // scrollHeader.scroll(function() {
-    //     scrollDataList.scrollLeft(scrollHeader.scrollLeft());
+    // scrollDataList.scrollLeft(scrollHeader.scrollLeft());
     // });
     // $('.add_preview-field').scroll(function() {
-    //     console.log("test");
-    //     $('.tumi_text_add').scrollTop($('.add_preview-field').scrollTop());
+    // console.log("test");
+    // $('.tumi_text_add').scrollTop($('.add_preview-field').scrollTop());
     // });
     // $('.tumi_text_add').scroll(function() {
-    //     console.log("test1");
-    //     //scrollHeader.scrollLeft(scrollDataList.scrollLeft());
-    //     $('.add_preview-field').scrollTop($('.tumi_text_add').scrollTop());
+    // console.log("test1");
+    // //scrollHeader.scrollLeft(scrollDataList.scrollLeft());
+    // $('.add_preview-field').scrollTop($('.tumi_text_add').scrollTop());
     // });
 
     $(".tumi_add_scroll").scroll(function() {
@@ -187,33 +180,44 @@
 
     // 投稿詳細画面
     $(document).on('click', ".tumi", function() {
-        var $target_modal = $(this).data("target");
-        $height = $(window).scrollTop();
-        $tumi_id = $target_modal.slice(6);
-        var edit_tumi_text = $('#edit_tumi_text_' + $tumi_id).val();
+        var $target_modal = $(this).data("target"),
+            $tumi_id = $target_modal.slice(6),
+            edit_tumi_text = $('#edit_tumi_text_' + $tumi_id).val(),
+            $height = $(window).scrollTop(),
+            top = $height + 36;
         $('.edit_tumi_tittle_detail').val(edit_tumi_text);
         $('.tumi_detail .tumi_img').attr('src', $($target_modal + ' > .tumi_image > img')[0].getAttribute('src'));
-        $('.tumi_detail .tumi_tittle_detail').replaceWith('<div class="tumi_tittle_detail">' + $($target_modal + ' > div > #tumi_tittle').text() + '</div>');
-        $('.tumi_detail .tumi_text_detail').replaceWith('<div class="tumi_text_detail">' + $($target_modal + ' > div > .tumi_text').text() + '</div>');
+        $('.tumi_detail .tumi_tittle_detail').replaceWith('<div class="tumi_tittle_detail" style="margin-bottom: 1rem;">' + $($target_modal + ' > div > #tumi_tittle').text() + '</div>');
+        $('.tumi_detail .tumi_text_detail').replaceWith('<div class="tumi_text_detail">' + $($target_modal + ' > div > .tumi_text').html() + '</div>');
+        $('.tumi_detail .tumi_date').replaceWith('<div class="tumi_date"><i class="fa-solid fa-clock" style="margin:0 0.5rem;"></i>' + $($target_modal + ' > div > .tumi_created').text() + '</div>');
         $('.tumi_detail').fadeIn();
+        $('.tumi_detail').offset({
+            top: top
+        });
         $('.modal_help').fadeIn();
         $('.tumi_detail_close').fadeIn();
         $('.tumi_id').replaceWith('<input type="hidden" class="tumi_id" value="' + $tumi_id + '">');
         // 編集ボタンをクリック
         $(document).on('click', '.edit_tumi_btn', function() {
             var $tumi_tittle = $('.tumi_detail .tumi_tittle_detail')[0].textContent,
-                $tumi_text = $('.tumi_detail .tumi_text_detail')[0].textContent;
+                $tumi_html_text = $('.tumi_detail .tumi_text_detail').html(),
+                $tumi_text = $($target_modal + ' > div > .tumi_markdown_text').val();
             $('.tumi_detail_noedit').fadeOut();
             setTimeout(function() {
                 $('.tumi_detail_edit').fadeIn();
+                $(window).scrollTop(top - 35);
             }, 300);
             $('.edit_tumi_tittle').val($tumi_tittle);
-            $('.edit_tumi_text').val($tumi_text);
+            $('.edit_tumi_text').text($tumi_text);
+            //$('.edit_tumi_text').replaceWith('<textarea type="text" name="text" id="edit_tumi_text" class="edit_tumi_text form-control" style="width: 100%;height: 19.2rem;" id="input-field" v-model="input">' + $tumi_text + '</textarea>');
+            //$('.edit_tumi_text').html($tumi_text);
             // プレビュー用にpタグ用意
-            newContent = document.createTextNode($tumi_text)
-            p_element = document.createElement("p");
-            p_element.appendChild(newContent);
-            $('.edit_preview-field')[0].appendChild(p_element);
+            // newContent = document.createTextNode($tumi_text)
+            // p_element = document.createElement("p");
+            // p_element.appendChild(newContent);
+            // $('.edit_preview-field')[0].appendChild(p_element);
+            console.log($tumi_html_text);
+            $('.edit_preview-field').append($tumi_html_text);
             // 更新ボタンをクリック
             $(document).on('click', '.edit_tumi_done', function() {
                 $.ajaxSetup({
@@ -244,14 +248,16 @@
             $('.tumi_detail_noedit').fadeIn();
             $('.tumi_detail_edit').fadeOut();
         });
-        $(document).on('click', ".return_btn", function() {
-            $('.tumi_detail_noedit').fadeIn();
-            $('.tumi_detail_edit').fadeOut();
-        });
         $(document).on('click', ".tumi_detail_close", function() {
             $('.modal_help').fadeOut();
             $('.tumi_detail').fadeOut();
             $('.tumi_detail_close').fadeOut();
+            $('.tumi_detail_noedit').fadeIn();
+            $('.tumi_detail_edit').fadeOut();
+        });
+        // 戻るボタンクリック
+        $(document).on('click', ".return_btn", function() {
+            $(window).scrollTop(top - 35);
             $('.tumi_detail_noedit').fadeIn();
             $('.tumi_detail_edit').fadeOut();
         });
@@ -282,12 +288,12 @@
             input: '' // index.htmlでv-model="input"が付与されている要素と双方向データバインディングされている。
         },
         // created: function() {
-        //     marked.setOptions({
-        //         langPrefix: '',
-        //         highlight: function(code, lang) {
-        //             return hljs.highlightAuto(code, [lang]).value
-        //         }
-        //     });
+        // marked.setOptions({
+        // langPrefix: '',
+        // highlight: function(code, lang) {
+        // return hljs.highlightAuto(code, [lang]).value
+        // }
+        // });
         // },
         computed: {
             convertMarkdown: function() {
@@ -305,12 +311,12 @@
             input: '' // index.htmlでv-model="input"が付与されている要素と双方向データバインディングされている。
         },
         // created: function() {
-        //     marked.setOptions({
-        //         langPrefix: '',
-        //         highlight: function(code, lang) {
-        //             return hljs.highlightAuto(code, [lang]).value
-        //         }
-        //     });
+        // marked.setOptions({
+        // langPrefix: '',
+        // highlight: function(code, lang) {
+        // return hljs.highlightAuto(code, [lang]).value
+        // }
+        // });
         // },
         computed: {
             convertMarkdown: function() {
@@ -359,20 +365,20 @@
     // const data_keys = Object.keys(array_datas); // それぞれのkeyを取得 Object.keys()：引数のカラムを取得している ※取得結果[name,image,text]
 
     // data_keys.forEach(el => {
-    //     const chart_id = "myBarChart" + el; // elはdata_keysのそれぞれのkey
-    //     var ctx = document.getElementById(chart_id);
-    //     const array_data = Object.values(array_datas[el]);
-    //     // var myBarChart = new Chart(ctx, {
-    //     //     // それぞれのidごとにchartが生成される。
-    //     // });
+    // const chart_id = "myBarChart" + el; // elはdata_keysのそれぞれのkey
+    // var ctx = document.getElementById(chart_id);
+    // const array_data = Object.values(array_datas[el]);
+    // // var myBarChart = new Chart(ctx, {
+    // // // それぞれのidごとにchartが生成される。
+    // // });
     // });
 
     // // タイトル入力処理
     // $(document).on('click', '.tumi_detail .tumi_tittle_detail', function() {
-    //     var $tumi_id = $('.tumi_detail .tumi_id')[0].value,
-    //         $tumi_tittle = $('.tumi_detail .tumi_tittle_detail')[0].textContent,
-    //         $tumi_text = $('.tumi_detail .tumi_text_detail')[0].textContent;
-    //     $(this).replaceWith('<textarea type="text" name="text" id="edit_tumi_' + $tumi_id + '" class="edit_tumi" style="width: 100%;">' + $tumi_tittle);
+    // var $tumi_id = $('.tumi_detail .tumi_id')[0].value,
+    // $tumi_tittle = $('.tumi_detail .tumi_tittle_detail')[0].textContent,
+    // $tumi_text = $('.tumi_detail .tumi_text_detail')[0].textContent;
+    // $(this).replaceWith('<textarea type="text" name="text" id="edit_tumi_' + $tumi_id + '" class="edit_tumi" style="width: 100%;">' + $tumi_tittle);
     //     $('#edit_tumi_' + $tumi_id).on('mouseout', function(e) {
     //         $.ajaxSetup({
     //             headers: {

@@ -26,7 +26,7 @@ class TumiController extends Controller
         $current_user = Auth::user();
         $current_user_id = $current_user->id;
         $goal_id = $request->goal_id;
-        $tumis = Tumi::where('user_id', $current_user->id)->get();
+        $tumis = Tumi::where('user_id', $current_user->id)->orderBy("created_at", "desc")->get();
         $param = ['tumis' => $tumis, 'goal_id' => $goal_id];
         return view('tumi.tumi', $param);
     }
@@ -47,13 +47,15 @@ class TumiController extends Controller
         $skills = explode(" ", $current_user->skill);
         $licences = explode(" ", $current_user->licence);
         $match_flg = DB::table('matches')->where('matched_user_id', $current_user->id)->where('match_flg', '!=', 1)->where('unmatch_flg', '!=', 1)->first();
+        $date = new DateTime();
+        $date->modify('+9 hour');
+        $year = $date->format('Y');
+        $mouth = $date->format('m');
+        $day = $date->format('d');
+        $created_at = $date->format('Y-m-d H:i:s');
         if ($request->file('image') != '') {
             $file_name = $request->file('image')->getClientOriginalName();
             $request->file('image')->storeAs('public/sample', $file_name);
-            $date = new DateTime();
-            $year = $date->format('Y');
-            $mouth = $date->format('m');
-            $day = $date->format('d');
             $form = [
                 'tittle' => $request->tumi_tittle,
                 'image' => 'storage/sample/' . $file_name,
@@ -62,7 +64,8 @@ class TumiController extends Controller
                 'mouth' => $mouth,
                 'day' => $day,
                 'user_id' => $current_user->id,
-                'goal_id' => $request->goal_id
+                'goal_id' => $request->goal_id,
+                'created_at' => $created_at,
             ];
         } else {
             $date = new DateTime();
@@ -77,7 +80,8 @@ class TumiController extends Controller
                 'mouth' => $mouth,
                 'day' => $day,
                 'user_id' => $current_user->id,
-                'goal_id' => $request->goal_id
+                'goal_id' => $request->goal_id,
+                'created_at' => $created_at,
             ];
         }
         $action = session()->get($this->method_action_key);
@@ -87,7 +91,7 @@ class TumiController extends Controller
         }
         $current_user = Auth::user();
         $current_user_id = $current_user->id;
-        $tumis = Tumi::where('user_id', $current_user->id)->get();
+        $tumis = Tumi::where('user_id', $current_user->id)->orderBy("created_at", "desc")->get();
         $param = ['current_user' => $current_user, 'users' => $users, 'skills' => $skills, 'licences' => $licences, 'message_count' => $message_count, 'top_message' => '', 'match_flg' => $match_flg, 'tumis' => $tumis, 'goal_id' => $request->goal_id];
         return view('tumi.tumi', $param);
     }
@@ -95,7 +99,7 @@ class TumiController extends Controller
     public function index(Request $request)
     {
         $current_user = Auth::user();
-        $tumis = Tumi::where('user_id', $current_user->id)->get();
+        $tumis = Tumi::where('user_id', $current_user->id)->orderBy("created_at", "desc")->get();
         return view('markdown', ['tumis' => $tumis]);
     }
 
