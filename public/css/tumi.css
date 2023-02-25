@@ -47,6 +47,21 @@ img{
     opacity: 0.8;
 }
 
+.tumi_delete{
+    width: 36%;
+    height: auto;
+    background-color: #e2f3e6;
+    top: 13%;
+    left: 31.5%;
+    position: absolute;
+    border-radius: 1rem;
+    padding: 2rem;
+    z-index: 10;
+    padding-left: 3rem;
+    padding-bottom: 1rem;
+    display: none;
+}
+
 .tumi{
     background-color:#fff;
     border: solid #ccc 1px;
@@ -231,6 +246,10 @@ img{
     padding: 0.375rem 0.75rem;
 }
 
+#preview-field p{
+    margin: 0;
+}
+
 .tumi_detail_edit{
     height: auto;
 }
@@ -278,6 +297,27 @@ img{
     right: 0;
     bottom: 0;
     padding: 1.5rem
+}
+
+.tumi_message,
+.goal_message {
+    padding: 0.5em 1em;
+    background: linear-gradient(to right, #07ff2b, #51b25b);
+    color: #FFF;
+    position: fixed;
+    left: 4%;
+    bottom: 10%;
+    transition: 1s;
+    font-size: 1.25rem;
+    border-radius: 8px;
+    z-index: 15;
+    display: none;
+}
+
+.tumi_delete_btn{
+    margin-top: -1rem;
+    margin-right: 0.6rem;
+    font-size: 1.2rem;
 }
 
 /* 

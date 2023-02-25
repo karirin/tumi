@@ -37,7 +37,7 @@ class TopController extends Controller
             $skills = explode(" ", $current_user->skill);
             $licences = explode(" ", $current_user->licence);
             $match_flg = DB::table('matches')->where('matched_user_id', $current_user->id)->where('match_flg', '!=', 1)->where('unmatch_flg', '!=', 1)->first();
-            $param = ['current_user' => $current_user, 'users' => $users, 'skills' => $skills, 'licences' => $licences, 'message_count' => $message_count, 'top_message' => '', 'match_flg' => $match_flg, 'goals' => $goals];
+            $param = ['current_user' => $current_user, 'users' => $users, 'skills' => $skills, 'licences' => $licences, 'message_count' => $message_count, 'top_message' => '', 'match_flg' => $match_flg, 'goals' => $goals, 'goal_message' => ''];
         } else {
             $param = ['users' => $users];
         }

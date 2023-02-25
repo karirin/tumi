@@ -16,4 +16,10 @@ class Goal extends Model
     public static $rules = array(
         'title' => 'required'
     );
+
+    public function goal_tittle($goal_id)
+    {
+        $goal_tittle = DB::select('select tittle from goals where id = ' . $goal_id);
+        return $goal_tittle[0]->tittle;
+    }
 }

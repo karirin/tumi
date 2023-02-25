@@ -31,24 +31,31 @@
         @endforeach
     </div>
     <div class="modal_help"></div>
+    <p class="goal_message">{{$goal_message}}</p>
     <i class="fa-solid fa-arrow-pointer pointer" id="pointer" style="display: none;"></i>
     <i class="fa-solid fa-arrow-pointer pointer2" id="pointer2" style="display: none;"></i>
     <i class="fa-regular fa-circle-xmark help_close1" style="display: none;"></i>
     <i class="fa-regular fa-circle-xmark help_close2" style="display: none;"></i>
     <i class="fa-regular fa-circle-xmark tumi_add_close" style="display: none;"></i>
-    <div class="tumi_add" style="display:none;">
+    <div class="tumi_add" style="display:none;top: 9%;">
         <form method="post" action="{{ asset('goal/add') }}" enctype="multipart/form-data" style="margin-bottom: 0;">
             @csrf
             <div class="row" style="height: 92%;" id="top_app">
                 <div class="col-6" style="padding:0;max-width: 49%;">
                     <div style="font-size:1.3rem;">タイトル</div>
-                    <input type="text" name="tumi_tittle" class="tumi_tittle_add form-control">
+                    <input type="text" name="tumi_tittle" class="tumi_tittle_add form-control" placeholder="プログラミングの勉強">
                     <div class="error_text_form" style="height: 27px;text-align:left;margin: 0 20%;">
                         <span class="tumi_tittle_error" style="display:none;color: #dc3545;">タイトルを入力してください</span>
+                        <span class="tumi_tittle_moji_error" style="display:none;color: #dc3545;">20字以下で入力してください</span>
                     </div>
                     <div style="font-size:1.3rem;">目標内容</div>
-                    <textarea type="text" name="tumi_text" id="edit_tumi_text input-field" class="tumi_text_add form-control" v-model="input"></textarea>
-                    <div class="error_text_form" style="height: 27px;text-align:left;margin: 0 20%;">
+                    <textarea type="text" name="tumi_text" id="edit_tumi_text" style="height: 10rem;" class="tumi_text_add form-control input-field" v-model="input" placeholder="５カ月間かけてプログラミングを習得する
+
+１か月目はHTMLを習得する。
+２か月目はCSSを習得する。
+３か月目でPHPを習得して、
+4～5か月目はWebサイトの制作を行う。"></textarea>
+                    <div class="error_text_form" style="height: 27px;text-align:left;">
                         <span class="tumi_text_error" style="display:none;color: #dc3545;">目標内容を入力してください</span>
                     </div>
                     <div style="font-size: 1.3rem;">画像</div>
@@ -61,7 +68,7 @@
                 </div>
                 <div class="col-6" style="padding:0;max-width: 49%;">
                     <div style="margin-top: 6rem;"><i class="fa-solid fa-eye" style="margin-right: 0.2rem;font-size: 1.3rem;"></i><span style="font-size:1.3rem;">プレビュー</span></div>
-                    <div id="preview-field" class="add_preview-field" v-html="convertMarkdown" style="height: 18rem;"></div>
+                    <div id="preview-field" class="add_preview-field" v-html="convertMarkdown" style="height: 10rem;"></div>
                 </div>
             </div>
             <div class="tumi_editbtn">
@@ -181,6 +188,15 @@
             $(".maintop_page").css("display", "inline-block");
         }, 840);
 
+        $(window).on('load', function() {
+            if ($('.goal_message').length) {
+                if ($('.goal_message')[0].textContent !== "") {
+                    $('.goal_message').fadeIn();
+                    $('.goal_message').fadeOut(3000);
+                }
+            }
+        });
+
         $(document).on('change', '#my_image', function(e) {
             var reader = new FileReader();
             $(".my_preview").fadeIn();
@@ -194,6 +210,19 @@
             $('.tumi_add').fadeIn();
             $('.tumi_add_close').fadeIn();
             $('.modal_help').fadeIn();
+            // 入力できる行数を６行以内に制限
+            let MAX_LINE_NUM = 6;
+            let textarea = document.getElementById("edit_tumi_text");
+            textarea.addEventListener("input", function() {
+                let lines = textarea.value.split("\n");
+                if (lines.length > MAX_LINE_NUM) {
+                    var result = "";
+                    for (var i = 0; i < MAX_LINE_NUM; i++) {
+                        result += lines[i] + "\n";
+                    }
+                    textarea.value = result;
+                }
+            }, false);
             $(document).on('click', '.tumi_add_close', function() {
                 $('.tumi_add').fadeOut();
                 $('.tumi_add_close').fadeOut();

@@ -77,7 +77,8 @@ class GoalController extends Controller
         }
         $current_user_id = $current_user->id;
         $goals = Goal::where('user_id', $current_user->id)->get();
-        $param = ['current_user' => $current_user, 'users' => $users, 'skills' => $skills, 'licences' => $licences, 'message_count' => $message_count, 'top_message' => '', 'match_flg' => $match_flg, 'goals' => $goals];
+        $goal_message = "積み上げ目標を投稿しました";
+        $param = ['current_user' => $current_user, 'users' => $users, 'skills' => $skills, 'licences' => $licences, 'message_count' => $message_count, 'top_message' => '', 'match_flg' => $match_flg, 'goals' => $goals, 'goal_message' => $goal_message];
 
         return view('top.index', $param);
     }
