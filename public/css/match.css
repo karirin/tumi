@@ -11,8 +11,6 @@
     font-family: sans-serif
 }
 
-<<<<<<< HEAD
-=======
 .top_image{
     margin-top: 2rem;
 }
@@ -21,7 +19,6 @@
     text-align: left;
 }
 
->>>>>>> 29e5689a371c8c7fa23ec3daed1644895d121451
 .match_top .match_user {
     display: inline-block;
     vertical-align: text-top;
@@ -44,6 +41,7 @@
     border-radius: 10rem;
     width: 12rem;
     height: 12rem;
+    object-fit: cover;
 }
 
 .match_top .match_user_profile {
@@ -189,8 +187,7 @@
 }
 
 .top_logo{
-    width: 53%;
-    position: absolute;
+    width: 100%;
     top: 0%;
     right: 1%;
     height: auto;
@@ -225,6 +222,20 @@ border-bottom: none;/*線を消す*/
     text-align: center;
 }
 
+.matchs_user{
+    margin-left: 60%;
+    color: burlywood;
+}
+
+.matchs_user:hover{
+    color: burlywood;
+    opacity: 0.5;
+}
+
+.mobile{
+    display:none;
+}
+
 /* ///////////////////////// */
 
 
@@ -237,13 +248,29 @@ border-bottom: none;/*線を消す*/
     display: none;
     top: 0;
     left: 0;
-    background-color: rgba(152, 152, 152, 0.7);
+    background-color: rgba(0, 0, 0, 0.3);
     width: 100%;
     height: 100%;
     z-index: 10;
 }
 
 .matchuser_detaile {
+    display: none;
+    position: absolute;
+    z-index: 15;
+    left: 37%;
+    border-radius: 8px;
+    -webkit-transform: translate(-50%, -10%);
+    transform: translate(-50%, -10%);
+    font-size: 1.3rem;
+    background-color: #fefefb;
+    color: #000;
+    width: 300px;
+    height: auto;
+    top: 20%;
+}
+
+.matchuser_detaile_phone {
     display: none;
     position: absolute;
     z-index: 15;
@@ -277,6 +304,7 @@ border-bottom: none;/*線を消す*/
 }
 
 .matchuser_detaile_prof h6,
+.matchuser_detaile_phone h6,
 .matchuser_detaile_prof_sample h6 {
     padding: 0em 0.5em;
     color: #494949;
@@ -284,30 +312,41 @@ border-bottom: none;/*線を消す*/
     border-left: solid 5px #ff9800;
 }
 
-.matchuser_detaile .matchuser_name {
+.matchuser_detaile .matchuser_name,
+.matchuser_detaile_phone .matchuser_name {
     font-weight: 1000;
 }
 
-.matchuser_detaile .matchuser_age {
+.matchuser_detaile .matchuser_age,
+.matchuser_detaile_phone .matchuser_age {
     font-size: x-small;
 }
 
-.matchuser_detaile .matchuser_address {
+.matchuser_detaile .matchuser_address,
+.matchuser_detaile_phone .matchuser_address {
     font-size: x-small;
 }
 
-.matchuser_detaile .matchuser_profile {
+.matchuser_detaile .matchuser_profile,
+.matchuser_detaile_phone .matchuser_profile {
     font-size: 1rem;
     margin-bottom: 0.5rem;
+    word-wrap: break-word;
 }
 
-.matchuser_detaile .matchuser_img {
+.matchuser_detaile .matchuser_img,
+.matchuser_detaile_phone .matchuser_img {
     width: 100%;
     border-radius: 8px 8px 0 0;
 }
 
-.matchuser_detaile .matchuser_occupation {
+.matchuser_detaile .matchuser_occupation,
+.matchuser_detaile_phone .matchuser_occupation {
     font-size: x-small;
+}
+
+.matchuser_detaile_sample.matchuser_detaile_sample{
+    padding: 0.5rem;
 }
 
 #match_good_btn,
@@ -316,7 +355,7 @@ border-bottom: none;/*線を消す*/
     padding: 7px 20px;
     border-radius: 25px;
     text-decoration: none;
-    color: #FFF;
+    color: #FFF!important;
     background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
     transition: .4s;
     font-size: 0.8rem;
@@ -351,7 +390,8 @@ border-bottom: none;/*線を消す*/
 .match_message,
 .top_message,
 .add_message,
-.mail_message {
+.mail_message,
+.tumi_message {
     padding: 0.5em 1em;
     background: -moz-linear-gradient(#FFC107, #ff8b5f);
     background: -webkit-linear-gradient(#FFC107, #ff8b5f);
@@ -389,7 +429,7 @@ border-bottom: none;/*線を消す*/
     position: absolute;
     left: 41%;
     right: 0;
-    top: 15%;
+    top: 18%;
     text-align: center;
     border-radius: 8px;
     background-color: #fefefb;
@@ -482,7 +522,7 @@ border-bottom: none;/*線を消す*/
 .matching_btn {
     position: absolute;
     left: 43.5%;
-    top: 76%;
+    top: 79%;
     z-index: 15!important;
 }
 
@@ -534,6 +574,18 @@ border-bottom: none;/*線を消す*/
 
 .message_list:nth-last-child(){
     margin-bottom: 2rem;
+}
+
+.edit_detail_btn .edit_detail_top_btn{
+    font-size: 1.5rem;
+    display: inline-block;
+    position: absolute;
+    right: 16%;
+}
+
+.edit_detail_top_btn.edit_detail_btn{
+    right: 16%;
+    position: absolute;
 }
 
 /* ///////////////////////// */
@@ -627,6 +679,12 @@ border-bottom: none;/*線を消す*/
 }
 
 @media screen and (max-width: 980px){
+    .PC{
+        display: none;
+    }
+    .mobile{
+        display: flex;
+    }
     .haikei{
         display: none;
     }
@@ -677,7 +735,7 @@ border-bottom: none;/*線を消す*/
         margin-left: 11%!important;
     }
     .help_message{
-        top: 29%;
+        top: 34%;
         font-size: 2rem;
     }
     .help_message2{
@@ -710,6 +768,7 @@ border-bottom: none;/*線を消す*/
     }
     .page_title.message_title{
         margin-bottom: 3rem;
+        padding-top: 12rem;
     }
     .top_title{
         width: 100%;
@@ -719,12 +778,14 @@ border-bottom: none;/*線を消す*/
     .top_title ul{
         background-color: #ffe1ae24;
     }
-    .matchuser_detaile{
+    .matchuser_detaile,
+    .matchuser_detaile_phone{
         width: 630px;
         left: 50%;
         top: 15%;
     }
-    .matchuser_detaile .matchuser_profile{
+    .matchuser_detaile .matchuser_profile,
+    .matchuser_detaile_phone .matchuser_profile{
         font-size: 2.5rem;
     }
     .matchuser_detaile_prof{
@@ -741,10 +802,14 @@ border-bottom: none;/*線を消す*/
     .matchuser_detaile_prof_sample h6{
         font-size:3rem!important;
     }
+    .matchuser_detaile_phone h6,
+    .matchuser_detaile_prof_sample h6{
+        font-size:3rem!important;
+    }
     .good_btn,
     .match_good_btn{
         font-size: 2.5rem!important;
-        padding: 7px 35px!important;
+        padding: 7px 32px!important;
         width: 40%!important;
     }
     .matchuser_name{
@@ -809,12 +874,31 @@ border-bottom: none;/*線を消す*/
     }
 
     .user_name_error,
-    .user_pass_error{
+    .user_mail_error,
+    .user_pass_error,
+    .user_img_error{
         font-size: 2.8rem;
     }
 
-    .matchuser_detaile .far.fa-times-circle{
+    .error_mail_form,
+    .error_img_form{
+        height:65px!important;
+        margin: 0 15%!important;
+    }
+
+    .edit_detail_top .error_mail_form{
+        margin: 0!important;
+    }
+
+    .matchuser_detaile .far.fa-times-circle,
+    .matchuser_detaile_phone .far.fa-times-circle{
         top: -14%;
+    }
+
+    .matchuser_detaile_phone .matchuser_skill,
+    .matchuser_detaile_phone .matchuser_licence,
+    .matchuser_detaile_phone .matchuser_workhistory{
+        font-size: 2.5rem!important;
     }
 
     .description_top img{
@@ -860,10 +944,10 @@ border-bottom: none;/*線を消す*/
     }
 
     .top_image{
-        width: 62%!important; 
+        width: 113%!important;
         height: auto!important;
-        margin-top: 34rem;
-        margin-left:0!important;
+        /* margin-top: 34rem; */
+        margin-left: 0!important;
     }
     
     .test_btn{
@@ -881,38 +965,38 @@ border-bottom: none;/*線を消す*/
 
     .pointer{
         font-size: 5rem;
-        left: 20%;
-        top: 25%;
+        left: 28%;
+        top: 28%;
     }
 
     .add_match.pointer{
         font-size: 5rem;
-        top: 25%;
-        left: 22%;
+        top: 18%;
+        left: 26%;
     }
 
     .add_match.pointer2{
         font-size: 5rem;
-        top: 70%;
-        left: 60%;
+        top: 61%;
+        left: 73%;
     }
 
     .pointer2{
         font-size: 5rem;
-        left: 65%;
-        top: 69%;
+        left: 73%;
+        top: 59%;
     }
 
     .pointer3{
         font-size: 5rem;
-        left: 63%;
-        top: 82%;
+        left: 71%;
+        top: 78%;
     }
 
     .pointer4{
         font-size: 5rem;
-        left: 27%;
-        top: 84%;
+        left: 34%;
+        top: 78%;
     }
 
     .show_menu{
@@ -932,19 +1016,12 @@ border-bottom: none;/*線を消す*/
         right: -5%;
         width: auto!important;
         margin-right: 5rem;
+        margin-left: 0rem;
         padding: 1.375rem 1.75rem;
         width: 22rem!important;
         height: 7rem;
         font-size: 3rem!important;
     }
-
-    /* .edit_detail_btn .edit_detail_top_btn{
-        width: auto!important;
-        margin-right: 5rem;
-        padding: 1.375rem 1.75rem;
-        width: 15rem!important;
-        font-size: 3rem!important;
-    } */
 
     .user_add_btn{
         bottom: 33%;
@@ -967,6 +1044,19 @@ border-bottom: none;/*線を消す*/
         font-size: 4rem;
         margin: 0 9%;
     }
+
+    .user_detail_message1.twitter{
+        margin: 0 5%;
+    }
+
+    .user_detail_message1.google{
+        margin: 0 5%;
+    }
+
+    .user_detail_message1.line{
+        margin: 0 11%;
+    }
+
 
     .user_detail_message2{
         font-size: 4rem;
@@ -991,6 +1081,32 @@ border-bottom: none;/*線を消す*/
 
     .profile_top .edit_address{
         width: 70%!important;
+    }
+
+    .edit_detail_btn{
+        padding: 1.375rem 1.75rem;
+        width: 15rem!important;
+        font-size: 3rem!important;
+        margin-top: 3rem;
+        display: inline-block!important;
+    }
+
+    .edit_detail_top .user_age .tag_tittle{
+        display: inline-block;
+    }
+
+    .matchs_user{
+        margin-left: 20%!important;
+        font-size: 3rem;
+    }
+
+    .social_tittle{
+        font-size: 3rem;
+    }
+
+    .mail_address,
+    .sns_btn{
+        font-size: 2rem;
     }
 
 /* ///////////////////////// */
@@ -1179,6 +1295,11 @@ img.my_preview {
     font-size:4rem;
 }
 
+.skill_tittle,
+.licence_tittle{
+    display: none;
+}
+
 /* ///////////////////////// */
 
 
@@ -1204,7 +1325,7 @@ img.my_preview {
 .edit_detail_top .user_age,
 .edit_detail_top .user_address,
 .edit_detail_top .user_occupation{
-    display: flex;
+    display: block;
     justify-content: space-between;
 }
 
@@ -1228,7 +1349,7 @@ img.my_preview {
 }
 
 .edit_detail_top .tag_tittle{
-    margin-top: 2rem;
+    margin-top: 2rem!important;
 }
 
 .edit_detail_top .edit_age{
@@ -1239,12 +1360,27 @@ img.my_preview {
 .edit_detail_top .edit_occupation{
     margin-top: 2rem;
     width: 52%!important;
+    display: inline-block;
+    margin-left: 12rem;
     /* margin-right: 10.5rem; */
 }
 
 .edit_detail_top .user_age .sai{
-    margin-right: 7rem;
+    /* margin-right: 7rem; */
     margin-top: 2rem;
+}
+
+.edit_detail_top .user_age_error,
+.edit_detail_top .user_address_error,
+.edit_detail_top .user_occupation_error,
+.edit_detail_top .user_profile_error,
+.edit_detail_top .user_workhistory_error,
+.edit_detail_top .user_mail_error{
+    font-size: 2.2rem;
+}
+
+.edit_detail_top .error_profile_form{
+    width: unset!important;
 }
 
 .user_login_top{
@@ -1260,6 +1396,12 @@ img.my_preview {
 
 .edit_detail_top_btn{
     font-size: 2.5rem!important;
+    vertical-align: unset!important;
+}
+
+.google_mark{
+    width: 3rem!important;
+    vertical-align: text-bottom!important;
 }
 
 .user_login_top .flex_btn .edit_detail_top_btn{
@@ -1280,8 +1422,21 @@ img.my_preview {
     font-size: 2rem!important;
 }
 
-.user_login_top .twitter_login{
+.twitter_login{
     font-size: 3rem;
+}
+
+.google_login{
+    font-size: 3rem;
+}
+
+.btn-social-long-line{
+    font-size: 3rem;
+}
+
+.line_mark{
+    width: 3rem!important;
+    margin-bottom: 0.8rem;
 }
 
 /* .user_login_top .flex_btn{
@@ -1292,11 +1447,17 @@ img.my_preview {
     margin-top: 4rem;
 }
 
-.user_login_top .btn-social-long-twitter{
+.btn-social-long-twitter{
     margin-top: 3rem;
 }
 
-.user_name_error
+/* .user_login_top .btn-social-long-google{
+    margin-top: 3rem;
+} */
+
+.password_reset{
+    font-size: 2.5rem;
+}
 
 .error_name_form{
     margin: 0 15%!important;
@@ -1384,13 +1545,13 @@ a.top_link_header_login img{
     left: 30%;
 }
 .help_message3{
-    top: 88%;
+    top: 85%;
     left: 35%;
     font-size: 2rem;
 }
 
 .help_message4{
-    top: 88%;
+    top: 85%;
     left: 7%;
     font-size: 2rem;
 }
@@ -1406,7 +1567,8 @@ a.top_link_header_login img{
     border-radius: 7rem;
     font-size: 2rem;
     padding: 1rem 0.5rem;
-    margin: 1.5rem 0 1.5rem 1.5rem;
+    max-width: 83.333333%;
+    margin-left: 3rem;
 }
 .message_top{
     margin-left: 5%!important;

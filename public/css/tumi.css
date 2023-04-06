@@ -11,7 +11,8 @@ img{
 }
 
 .tumi_plus,
-.goal_plus{
+.goal_plus,
+.tumi_plus_tutorial{
     font-size: 5rem;
     position: fixed;
     bottom: 10%;
@@ -19,11 +20,13 @@ img{
 }
 
 .tumi_plus:hover,
-.goal_plus:hover{
+.goal_plus:hover,
+.tumi_plus_tutorial:hover{
     opacity: 0.8;
 }
 
-.tumi_add{
+.tumi_add,
+.tumi_tutorial{
     width: 70%;
     height: auto;
     background-color: #e2f3e6;
@@ -35,19 +38,12 @@ img{
     z-index: 10;
 }
 
-.tumi_add_close{
-    z-index: 15;
-    font-size: 6rem;
-    position: absolute;
-    top: 3%;
-    right: 2%;
-}
-
 .tumi_add_close:hover{
     opacity: 0.8;
 }
 
-.tumi_delete{
+.tumi_delete,
+.goal_delete{
     width: 36%;
     height: auto;
     background-color: #e2f3e6;
@@ -62,6 +58,19 @@ img{
     display: none;
 }
 
+.goal_delete{
+    width: 85%;
+    top: 14%;
+    left: 5%;
+}
+
+.goal_detail{
+    position: absolute;
+    margin-left: 53rem;
+    margin-top: -2.5rem;
+    padding: 0.5rem;
+}
+
 .tumi{
     background-color:#fff;
     border: solid #ccc 1px;
@@ -73,6 +82,12 @@ img{
     margin-bottom: 3rem;
     box-shadow: 0 10px 25px 0 rgb(0 0 0 / 20%);
     vertical-align: top;
+}
+
+.goal_delete .tumi{
+    display: flex;
+    width: 62rem;
+    height: 13rem;
 }
 
 .tumi:hover{
@@ -117,8 +132,13 @@ img{
     width: 20%;
 }
 
-.tumi_submit{
+.tumi_submit,
+.tumi_submit_tutorial{
     font-size: 1.5rem;
+}
+
+#edit_tumi_text textarea.form-control{
+    height: 18rem;
 }
 
 .footer {
@@ -173,6 +193,15 @@ img{
     margin: 0 43%;
   } */
 
+  body {
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+  }
+
+  body::-webkit-scrollbar{
+    display: none;
+  }
+
 .goal_text{
     white-space: pre-line;
     font-size: 1.2rem;
@@ -212,7 +241,8 @@ img{
     display: none;
 }
 
-.tumi_detail_close{
+.tumi_detail_close,
+.tumi_add_close{
     z-index: 15;
     font-size: 6rem;
     position: fixed;
@@ -256,7 +286,7 @@ img{
 
 .tumi_text_add{
     width: 100%;
-    height: 18rem!important;
+    height: 18rem;
     border-radius: 0;
     resize: none;
 }
@@ -270,6 +300,10 @@ img{
 
 .tumi .tumi_image.goal_image img{
     border-radius: 8px 0 0 8px;
+}
+
+.tumi.goal_delete_detail .tumi_image.goal_image img{
+    height: 100%!important;
 }
 
 .fa-regular.fa-circle-xmark.tumi_detail_close:hover{
@@ -324,3 +358,99 @@ img{
 #preview-field::-webkit-scrollbar{
     display:none;
   } */
+
+/* ///////////////////////// */
+
+
+/*         ヘルプ画面         */
+
+
+/* ///////////////////////// */
+
+.pointer{
+    font-size: 4rem;
+    z-index: 20;
+    position: fixed;
+    bottom: 6%;
+    right: 2%;
+    color: #000;
+}
+
+.help_message.tumiage {
+    top: 77%;
+    left: 69%;
+}
+
+.help_message2.tumiage {
+    left: 50%;
+}
+
+.help_message3.tumiage {
+    top: 66%;
+}
+/* .goal_plus{
+    font-size: 5rem;
+    position: fixed;
+    bottom: 10%;
+    right: 3%;
+} */
+/* 
+.pointer{
+    display: none;
+    font-size:3rem;
+    z-index: 20;
+    top: 40%;
+    left: 30%;
+    position:absolute;
+    color: #000!important;
+} */
+
+.ripples{
+        /*波紋の基点とするためrelativeを指定*/
+  position: relative;
+background:#333;
+border-radius: 50%;
+color:#ccc;
+  outline: none;
+  /*アニメーションの設定*/
+  transition: all .3s;
+}
+
+.ripples::after,
+.ripples::before {
+    content: '';
+    /*絶対配置で波形の位置を決める*/
+    position: absolute;
+    left: -25%;
+    top: -25%;
+    /*波形の形状*/
+    border: 1px solid #333;
+    width: 150%;
+    height: 150%;
+    /*はじめは不透明*/
+    opacity: 1;
+    /*ループするアニメーションの設定*/
+    animation:3s circleanime linear infinite;
+    z-index: 10;
+}
+
+.ripples::before {
+    animation-delay:1s; 
+}
+
+@keyframes circleanime{
+  /* 0%{
+    transform: scale(0.68);
+  }
+  100%{
+    transform: scale(1.2);
+    opacity: 0;
+  } */
+  0%{
+    transform: scale(0.68);
+  }
+  100%{
+    transform: scale(1);
+    opacity: 0;
+  }
+}

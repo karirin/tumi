@@ -32,6 +32,7 @@ Route::post('tumi/edit', 'TumiController@edit');
 Route::post('tumi/delete', 'TumiController@delete');
 
 Route::post('goal/add', 'GoalController@add');
+Route::post('goal/delete', 'GoalController@delete');
 
 Route::get('user/login', 'UserController@login');
 
@@ -41,6 +42,12 @@ Route::post('user/test_login', 'UserController@test_login');
 Route::get('user/add', 'UserController@add');
 Route::post('user/edit', 'UserController@edit');
 Route::get('user/profile', 'UserController@profile');
+
+Route::get('/linelogin', 'LineLoginController@lineLogin');
+Route::get('/callback', 'LineLoginController@callback');
+
+Route::get('/auth/redirect', 'GoogleLoginController@getGoogleAuth');
+Route::get('/login/callback', 'GoogleLoginController@authGoogleCallback');
 
 Route::post('user/add', 'UserController@create');
 

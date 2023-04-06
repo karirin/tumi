@@ -58,9 +58,9 @@ class AuthController extends Controller
                 $message_count++;
             }
         }
-        $match_flg = Match::where('matched_user_id', $current_user->id)->where('match_flg', '!=', 1)->where('unmatch_flg', '!=', 1)->first();
+        //$match_flg = Match::where('matched_user_id', $current_user->id)->where('match_flg', '!=', 1)->where('unmatch_flg', '!=', 1)->first();
 
-        $param = ['current_user' => $current_user, 'profile' => $current_user->profile, 'name' => $current_user->name, 'password' => '', 'hash_password' => '', 'image' => $current_user->image, 'users' => $users, 'skills' => $skills, 'licences' => $licences, 'message_count' => $message_count, 'message' => $message, 'top_message' => '', 'match_flg' => $match_flg];
-        return view('user.edit_detail', $param);
+        $param = ['current_user' => $current_user, 'profile' => $current_user->profile, 'name' => $current_user->name, 'password' => '', 'hash_password' => '', 'image' => $current_user->image, 'users' => $users, 'skills' => $skills, 'licences' => $licences, 'message_count' => $message_count, 'message' => $message, 'top_message' => ''];
+        return view('/', $param);
     }
 }

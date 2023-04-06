@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "554b338b7ef68d37cf3347b8316ef714",
+    "content-hash": "53d10d0e8041236850cd8360c26ae15f",
     "packages": [
         {
             "name": "brick/math",
@@ -1717,10 +1717,6 @@
                 "laravel",
                 "oauth"
             ],
-            "support": {
-                "issues": "https://github.com/laravel/socialite/issues",
-                "source": "https://github.com/laravel/socialite"
-            },
             "time": "2023-01-20T15:42:35+00:00"
         },
         {
@@ -3479,9 +3475,6 @@
                 }
             ],
             "description": "Twitter OAuth1 Provider for Laravel Socialite",
-            "support": {
-                "source": "https://github.com/SocialiteProviders/Twitter/tree/4.1.1"
-            },
             "time": "2021-01-29T05:41:11+00:00"
         },
         {

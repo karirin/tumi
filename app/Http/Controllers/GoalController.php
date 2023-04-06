@@ -15,6 +15,7 @@ use App\Models\Message_relation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
+use App\Tumi;
 use DateTime;
 
 class GoalController extends Controller
@@ -80,6 +81,32 @@ class GoalController extends Controller
         $goal_message = "積み上げ目標を投稿しました";
         $param = ['current_user' => $current_user, 'users' => $users, 'skills' => $skills, 'licences' => $licences, 'message_count' => $message_count, 'top_message' => '', 'match_flg' => $match_flg, 'goals' => $goals, 'goal_message' => $goal_message];
 
+        return view('top.index', $param);
+    }
+
+    public function delete(Request $request)
+    {
+        $current_user = Auth::user();
+        $users = User::get();
+        $current_user_id = $current_user->id;
+        $goal_id = $request->goal_delete_id;
+        $message = new Message_relation;
+        $message_cs = Message_relation::where('user_id', $current_user->id)->get();
+        $message_count = 0;
+        $goals = Goal::where('user_id', $current_user->id)->get();
+        $match_flg = DB::table('matches')->where('matched_user_id', $current_user->id)->where('match_flg', '!=', 1)->where('unmatch_flg', '!=', 1)->first();
+        foreach ($message_cs as $message_c) {
+            if ($message_c->message_count != 0 || $message_c->message_count == 'match') {
+                $message_count++;
+            }
+        }
+        $tumis = Tumi::where('user_id', $current_user->id)->orderBy("created_at", "desc")->get();
+        $goal_class = new Goal;
+        $tumi_id = $request->tumi_id;
+        DB::delete('delete from goals where id = ' . $goal_id);
+        DB::delete('delete from tumis where goal_id = ' . $goal_id);
+        $goal_message = "積み上げ目標を削除しました";
+        $param = ['current_user' => $current_user, 'users' => $users, 'message_count' => $message_count, 'top_message' => '', 'match_flg' => $match_flg, 'goals' => $goals, 'goal_message' => $goal_message];
         return view('top.index', $param);
     }
 }

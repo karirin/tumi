@@ -39,9 +39,9 @@
                     </a>
                 </li>
                 <!-- <li class="header_menu_wide"><a class="profile" href="{{ asset('user/profile') }}" style="vertical-align: middle;"><i class="fas fa-users" style="margin-right: 0.5rem;font-size: 1.5rem;"></i>プロフィール編集</a>
-                </li>
+                </li>-->
                 <li class="header_menu_wide" style="vertical-align: middle;"><a href="{{asset('user/logout')}}" style="vertical-align: middle;"><i class="fas fa-sign-out-alt" style="margin-right: 0.5rem;"></i>ログアウト</a>
-                </li> -->
+                </li>
         </nav>
         <ul style="display: inline-block;width: auto;margin-left: 24rem;vertical-align: middle;z-index: 30;">
             <li class="show_menu" style="margin: 0;"><i class="fas fa-bars" style="font-size: 4rem;margin-left: -1rem;"></i>

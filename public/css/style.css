@@ -19,6 +19,10 @@ image{
     object-fit: cover;
 }
 
+img{
+    object-fit: cover;
+}
+
 a {
     text-decoration-line: none;
 }
@@ -370,6 +374,48 @@ nav.navbar.navbar-dark {
     height: 2.5rem;
 }
 
+.sns_btn:hover{
+    opacity: 0.5;
+}
+
+.social_tittle{
+    padding: 0.25em 0.5em;/*上下 左右の余白*/
+    margin: 0 14%;
+    margin-top: 2rem;
+    border-bottom: solid 1px;
+    padding-bottom: 1rem;
+}
+
+.btn-social-long-line {
+    color: #FFF;
+    display: inline-block;
+    text-align: center;
+    font-size: 15px;
+    overflow: hidden;
+    text-decoration: none;
+    background: hsla(0, 0%, 62%, .2);
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+    background-color: #06C755;
+    direction: ltr;
+    font-weight: 900;
+    padding: 5px 30px 5px 15px;
+    text-align: left;
+    margin-top: 1rem;
+}
+
+.btn-social-long-twitter span,
+.btn-social-long-google span,
+.btn-social-long-line span{
+    display: inline-block;
+    transition: .5s;
+}
+
+.btn-social-long-twitter:hover,
+.btn-social-long-google:hover,
+.btn-social-long-line:hover {
+    opacity: 0.8;
+}
+
 .btn_flex {
     display: none;
     justify-content: space-around;
@@ -470,12 +516,31 @@ nav.navbar.navbar-dark {
     margin-top: 1rem;
 }
 
-.btn-social-long-twitter span {
+.btn-social-long-google {
+    color: #FFF;
+    display: inline-block;
+    text-align: center;
+    font-size: 15px;
+    overflow: hidden;
+    text-decoration: none;
+    background: hsla(0, 0%, 62%, .2);
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+    background-color: #fff;
+    direction: ltr;
+    font-weight: 900;
+    padding: 5px 30px 5px 15px;
+    text-align: left;
+    margin-top: 1rem;
+}
+
+.btn-social-long-twitter span,
+.btn-social-long-google span{
     display: inline-block;
     transition: .5s;
 }
 
-.btn-social-long-twitter:hover {
+.btn-social-long-twitter:hover,
+.btn-social-long-google:hover {
     opacity: 0.8;
 }
 
@@ -627,11 +692,11 @@ nav.navbar.navbar-dark {
     position: fixed;
     right: 3%;
     top: 8%;
-    font-size: 2rem;
+    font-size: 3rem;
 }
 
 .help_btn:hover{
-    opacity: 0.5;
+    opacity: 0.3;
 }
 
 @keyframes fadeUpAnime {
@@ -1814,24 +1879,24 @@ img.my_preview {
     color: #fff;
 }
 
-.pointer{
-    display: none;
-    font-size:3rem;
-    z-index: 20;
-    top: 40%;
-    left: 30%;
-    position:absolute;
-    color: #000!important;
-}
-
 .pointer2{
     display: none;
-    font-size:3rem;
+    font-size:4rem;
     z-index: 20;
-    top: 80%;
-    left: 38%;
+    top: 56%;
+    left: 60%;
     position:absolute;
-    color: #000!important;
+    color: #000;
+}
+
+.pointer2.tumiage{
+    display: none;
+    font-size:4rem;
+    z-index: 20;
+    vertical-align: text-top;
+    margin-right: -6rem;
+    position: unset;
+    color: #000;
 }
 
 .pointer3{
@@ -1866,28 +1931,39 @@ img.my_preview {
 } */
 
 .help_message {
-    top: 30%;
-    left: 42%;
+    top: 72%;
+    left: 70%;
     background-color: #fff;
     position: absolute;
     margin: 2em 0;
     padding: 0.5em 1em;
-    border: solid 3px burlywood;
+    border: solid 3px #246d34;
     z-index: 15;
 }
 
 .help_message2{
-    top: 67%;
-    left: 51%;
+    top: 2%;
+    left: 7%;
     background-color: #fff;
     position: absolute;
     margin: 2em 0;
     padding: 0.5em 1em;
-    border: solid 3px burlywood;
+    border: solid 3px #246d34;
     z-index: 15;
 }
 
 .help_message3{
+    top: 56%;
+    left: 50%;
+    background-color: #fff;
+    position: absolute;
+    margin: 2em 0;
+    padding: 0.5em 1em;
+    border: solid 3px #246d34;
+    z-index: 15;
+}
+
+/* .help_message3{
     top: 70%;
     left: 68%;
     background-color: #fff;
@@ -1907,7 +1983,7 @@ img.my_preview {
     padding: 0.5em 1em;
     border: solid 3px burlywood;
     z-index: 15;
-}
+} */
 
 .help-title {
     position: absolute;
@@ -1918,7 +1994,7 @@ img.my_preview {
     height: 25px;
     line-height: 25px;
     font-size: 15px;
-    background: burlywood;
+    background: #246d34;
     color: #ffffff;
     font-weight: bold;
     border-radius: 5px 5px 0 0;

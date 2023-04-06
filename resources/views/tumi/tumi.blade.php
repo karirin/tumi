@@ -7,7 +7,9 @@
 <div class="modal_help"></div>
 <div id="splash"></div>
 <i class="fa-solid fa-circle-plus tumi_plus"></i>
+<i class="fa-solid fa-circle-plus tumi_plus_tutorial" style="display:none;"></i>
 <i class="fa-regular fa-circle-xmark tumi_detail_close" style="display: none;"></i>
+<i class="fa-solid fa-circle-question help_btn"></i>
 <div class="row tumi_top" style="display: none;">
     <h3 class="serach tumi_tittle">{{$goal_class->goal_tittle($goal_id)}}</h3>
     <div class="col-10 offset-1">
@@ -39,13 +41,13 @@
 </div>
 <div class="tumi_delete">
     <div style="font-size: 1.6rem;margin-bottom: 1rem;">こちらの投稿を削除しますか。</div>
-    <div class="tumi tumi_delete_detail" style="margin: 0;"></div>
+    <div class="tumi tumi_delete_detail" style="margin: 0;pointer-events: none;"></div>
     <form method="post" action="{{ asset('tumi/delete') }}">
         @csrf
         <input type="hidden" name="tumi_id" class="tumi_delete_id">
         <input type="hidden" name="goal_id" value="{{$goal_id}}">
         <div style="text-align:right;margin-top:2rem;">
-            <button class="btn btn btn-outline-dark return_delete_btn" type="button" style="font-size: 1.5rem;margin-right: 1.5rem;">戻る</button>
+            <button class="btn btn btn-outline-dark return_delete_btn" type="button" style="font-size: 1.5rem;margin-right: 1.5rem;">閉じる</button>
             <button class="btn btn btn-outline-dark" type="submit" style="font-size: 1.5rem;">削除</button>
         </div>
     </form>
@@ -87,6 +89,54 @@ PHPでは文末にセミコロン「;」を使って文を区切る
         </div>
         <div style="text-align: right;">
             <button class="btn btn btn-outline-dark tumi_submit" style="z-index: 10;position: relative;">投稿</button>
+            <button class="btn btn-outline-dark tumi_submit_tutorial" style="z-index: 10; position: relative;display:none;" name="post" value="post" id="post">投稿</button>
+        </div>
+        <input type="hidden" name="goal_id" value="{{$goal_id}}">
+    </form>
+</div>
+<div class="tumi_tutorial" id="app1" style="display:none;">
+    <form method="post" action="{{ asset('tumi/add') }}" enctype="multipart/form-data" style="margin-bottom: 0;height: 33rem;">
+        @csrf
+        <div class="row" style="height: 89%;">
+            <div class="col-6" style="padding:0;max-width: 49%;">
+                <div style="font-size:1.3rem;">タイトル</div>
+                <span class="ripples" style="display: none;">
+                    <input type="text" name="tumi_tittle" class="tumi_tittle_add_tutorial form-control" placeholder="プログラミングの勉強">
+                </span>
+                <div class="error_text_form" style="height: 27px;text-align:left;">
+                    <span class="tumi_tittle_error" style="display:none;color: #dc3545;">タイトルを入力してください</span>
+                </div>
+                <div style="font-size:1.3rem;">積み上げ内容</div>
+                <span class="ripples" style="display: none;">
+                    <textarea type="text" name="tumi_text" id="edit_tumi_text input-field" style="height: 15rem;overflow: hidden;" class="tumi_text_add_tutorial form-control input-field" v-model="input" placeholder="PHPについて勉強した。
+
+PHPでは文末にセミコロン「;」を使って文を区切る
+文字列などを出力するときは「echo」と書く
+出力したい文字列はシングルクォーテーションかダブルクォーテーションで囲む"></textarea>
+                </span>
+                <div class="error_text_form" style="height: 27px;text-align:left;">
+                    <span class="tumi_text_error" style="display:none;color: #dc3545;">積み上げた内容を入力してください</span>
+                </div>
+                <div style="font-size: 1.3rem;">画像</div>
+                <label class="image_label">
+                    <i class="far fa-image"></i>
+                    <input type="file" name="image" id="my_image" style="display:none;">
+                </label>
+                <!-- <span style="margin-left: 1rem;">※（縦横200px×200px以上推奨、5MB未満）</span> -->
+                <input type="button" id="my_clear" value="ファイルをクリアする">
+                <div style="height: 8.5rem;display: inline-block;">
+                    <div class="preview_img"><img class="my_preview" style="margin-left: 3rem;margin-top: -1rem;"></div>
+                </div>
+            </div>
+            <div class="col-6" style="padding:0;max-width: 49%;">
+                <div style="margin-top: 6rem;"><i class="fa-solid fa-eye" style="margin-right: 0.2rem;font-size: 1.3rem;"></i><span style="font-size:1.3rem;">プレビュー</span></div>
+                <div id="preview-field" class="add_preview-field" v-html="convertMarkdown" style="height: 15rem;"></div>
+            </div>
+        </div>
+        <div style="text-align: right;">
+            <i class="fa-solid fa-arrow-pointer pointer2 tumiage" id="pointer2" style="display: none;"></i>
+            <button class="btn btn btn-outline-dark tumi_submit" style="z-index: 10;position: relative;">投稿</button>
+            <button class="btn btn-outline-dark tumi_submit_tutorial" style="z-index: 10; position: relative;display:none;" name="post" value="post" id="post">投稿</button>
         </div>
         <input type="hidden" name="goal_id" value="{{$goal_id}}">
     </form>
@@ -150,6 +200,19 @@ PHPでは文末にセミコロン「;」を使って文を区切る
     </div>
 </div>
 <p class="tumi_message">{{$tumi_message}}</p>
+<i class="fa-solid fa-arrow-pointer pointer" id="pointer" style="display: none;"></i>
+<div class="help_message tumiage" style="display:none;">
+    <span class="help-title">積み上げ投稿の流れ</span>
+    右下のプラスボタンをクリック
+</div>
+<div class="help_message2 tumiage" style="display:none;">
+    <span class="help-title">積み上げ投稿の流れ</span>
+    積み上げ目標のタイトル、目標内容、画像を入力します。
+</div>
+<div class="help_message3 tumiage" style="display:none;">
+    <span class="help-title">積み上げ投稿の流れ</span>
+    入力後、投稿ボタンをクリックします。
+</div>
 @endsection
 @section('footer')
 @parent
@@ -161,6 +224,139 @@ PHPでは文末にセミコロン「;」を使って文を区切る
                 $('.tumi_message').fadeOut(3000);
             }
         }
+    });
+
+    // チュートリアル画面
+    $(document).on('click', '.help_btn', function() {
+        $('.tumi_plus').fadeOut();
+        $('.tumi_plus_tutorial').fadeIn();
+        $('.modal_help').fadeIn();
+        // $('#pointer').addClass('pointer');
+        $('#pointer').fadeIn();
+        $('.help_message').fadeIn();
+        $('.tumi_detail_close').fadeIn();
+        $('.tumi_plus_tutorial').css({
+            'z-index': '15'
+        });
+        setInterval(function() {
+            $('#pointer').animate({
+                'color': '#000'
+            }, 2000, 'linear');
+            $('#pointer').animate({
+                'color': '#FFF'
+            }, 2000, 'linear');
+        }, 2000);
+        $('.tumi_submit').hide();
+        $('.tumi_submit_tutorial').show();
+        // 目標投稿ボタンクリック
+        $(document).on('click', ".tumi_plus_tutorial", function() {
+            $('.tumi_tutorial').fadeIn();
+            $('.modal_help').fadeIn();
+            $('.help_message2').fadeIn();
+            $('.help_message3').fadeIn();
+            // $('#pointer2').addClass('pointer2');
+            $('.pointer2').fadeIn();
+            setInterval(function() {
+                $('#pointer2').animate({
+                    'color': '#000'
+                }, 2000, 'linear');
+                $('#pointer2').animate({
+                    'color': '#FFF'
+                }, 2000, 'linear');
+            }, 2000);
+            $('.ripples').show();
+            $('.tumi_add_close').hide();
+            $('.help_message').hide();
+            $('.tumi_tutorial').css({
+                'top': '40px'
+            });
+            $('.goal_plus').css({
+                'z-index': 'unset'
+            });
+            $('#pointer').removeClass('pointer');
+            $('#pointer').fadeOut();
+            setInterval(function() {
+                $('.tumi_tittle_add').animate({
+                    'box-shadow': '0'
+                }, 2000, 'linear');
+                $('.tumi_tittle_add').animate({
+                    'box-shadow': '0 10px 25px 0 rgb(0 0 0 / 20%)'
+                }, 2000, 'linear');
+                // $('.tumi_tittle_add')[0].animate({
+                //     'opacity': '0'
+                // }, 2000, 'linear');
+                // $('.tumi_tittle_add')[0].animate({
+                //     'opacity': '0.8'
+                // }, 2000, 'linear');
+            }, 2000);
+            setInterval(function() {
+                $('.tumi_text_add')[0].animate({
+                    'box-shadow': '0 10px 25px 0 rgb(0 0 0 / 20%)'
+                }, 2000, 'linear');
+                $('.tumi_text_add')[0].animate({
+                    'box-shadow': '0 10px 25px 0 rgb(0 0 0 / 20%)'
+                }, 2000, 'linear');
+            }, 2000);
+            setInterval(function() {
+                $('.tutorial_label').animate({
+                    'color': '#000'
+                }, 2000, 'linear');
+                $('.tutorial_label').animate({
+                    'color': 'darkgray'
+                }, 2000, 'linear');
+            }, 2000);
+            //$('.tumi_tittle_add')[0].setAttribute("style", "border-color: #dc3545;");
+        });
+        $(document).on('click', ".tumi_detail_close", function() {
+            $('#pointer').stop(false, false);
+            $('#pointer2').stop(false, false);
+            $('.tumi_plus').fadeIn();
+            $('.tumi_plus_tutorial').fadeOut();
+            $('.matchuser_detaile').fadeOut();
+            $('.matchuser_detaile_prof').fadeOut();
+            $('.matchuser_detaile_prof_sample').fadeOut();
+            $('.help_message').fadeOut();
+            $('.help_message2').fadeOut();
+            $('.help_message3').fadeOut();
+            $('.modal_help').fadeOut();
+            // $('#pointer').removeClass('pointer');
+            $('#pointer').fadeOut();
+            // $('#pointer2').removeClass('pointer2');
+            $('#pointer2').fadeOut();
+            $('.content').css('position', 'unset');
+            $('.tumi_detail_close').fadeOut();
+            $('#sample_user').replaceWith('<input type="hidden" class="sample_user">');
+            $('.match_user:first').fadeIn();
+            $('.matchuser_detaile_prof_sample').attr('class', 'matchuser_detaile_prof');
+            $('.tumi_tutorial').fadeOut();
+            $('body').css({
+                'position': 'unset'
+            });
+        });
+        $(document).on('click', ".modal_help", function() {
+            $('.tumi_plus').fadeIn();
+            $('.tumi_plus_tutorial').fadeOut();
+            $('.matchuser_detaile').fadeOut();
+            $('.matchuser_detaile_prof').fadeOut();
+            $('.matchuser_detaile_prof_sample').fadeOut();
+            $('.help_message').fadeOut();
+            $('.help_message2').fadeOut();
+            $('.help_message3').fadeOut();
+            $('.modal_help').fadeOut();
+            $('#pointer').removeClass('pointer');
+            $('#pointer').fadeOut();
+            $('#pointer2').removeClass('pointer2');
+            $('#pointer2').fadeOut();
+            $('.content').css('position', 'unset');
+            $('.tumi_detail_close').fadeOut();
+            $('#sample_user').replaceWith('<input type="hidden" class="sample_user">');
+            $('.match_user:first').fadeIn();
+            $('.matchuser_detaile_prof_sample').attr('class', 'matchuser_detaile_prof');
+            $('.tumi_tutorial').fadeOut();
+            $('body').css({
+                'position': 'unset'
+            });
+        });
     });
 
     $(function() {
@@ -390,7 +586,7 @@ PHPでは文末にセミコロン「;」を使って文を区切る
         $('.tumi_text_add').change(function() {
             var str = $(this).value;
             if (str != '') {
-                $('.tumi_text_add')[0].setAttribute("style", "border-color: #ced4da;");
+                $('.tumi_text_add')[0].setAttribute("style", "border-color: #ced4da;height:18rem;");
                 $('.tumi_text_error').fadeOut();
             }
         });
